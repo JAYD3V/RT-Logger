@@ -1,0 +1,41 @@
+{
+    "name": "esm-typescript-nodejs",
+    "version": "0.0.0",
+    "description": "...",
+    "main": "main.js",
+    "scripts": {
+        "test": "mocha ./module/test/",
+        "build": "tsc",
+        "start": "node ./build/main.js",
+        "debug": "node --inspector ./build/main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JAYD3V/esm-typescript-nodejs.git"
+    },
+    "keywords": [
+        "ECMAS",
+        "Module",
+        "TypeScript",
+        "Node.js"
+    ],
+    "author": "JAYD3V",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/JAYD3V/esm-typescript-nodejs/issues"
+    },
+    "homepage": "https://github.com/JAYD3V/esm-typescript-nodejs#readme",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.11.0",
+        "@typescript-eslint/parser": "^5.11.0",
+        "eslint": "^7.32.0",
+        "eslint-config-standard": "^16.0.3",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^5.2.0",
+        "mocha": "^9.2.1",
+        "prettier": "2.5.1",
+        "semver": "^7.3.5",
+        "typescript": "^4.7.0-dev.20220305"
+    }
+}
