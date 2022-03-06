@@ -6,7 +6,7 @@
 
 
 # DEVELOPMENT ENV CONFIGURATION
-.vscode/*
+.vscode/
 cspell.json
 .eslintrc.json
 .editorconfig
@@ -16,13 +16,13 @@ cspell.json
 
 
 # PROJECT FILES & DEPENDANCIES
-node_modules
+node_modules/
 package-lock.json
 .Env
 
 
 # TYPESCRIPT / JAVASCRIPT
-module/*
+module/
 *.js
 *.mjs
 *.cjs
@@ -32,7 +32,7 @@ module/*
 # TEMPRARY FILES
 log/
 .tmp/
-.npm/*
+.npm/
 .cache/
 *.log
 *.txt
