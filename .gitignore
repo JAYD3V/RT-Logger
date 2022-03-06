@@ -8,7 +8,6 @@
 # DEVELOPMENT ENV CONFIGURATION
 .vscode/
 cspell.json
-.eslintrc.json
 .editorconfig
 .prettierrc
 .babelrc
