@@ -3,13 +3,13 @@
         // Project Structure
         "rootDir": "./source",
         "outDir": "./module",
+        "declarationDir": "./typings",
 
         // ECMAS Support
         "target": "ES2022",
         "lib": ["ESNext"],
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "declarationDir": "types",
         "declaration": true,
         "declarationMap": true,
 

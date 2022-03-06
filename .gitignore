@@ -1,0 +1,44 @@
+# IGNORE LIST
+.giignore
+.npmignore
+.eslintignore
+.vscodeignore
+
+
+# DEVELOPMENT ENV CONFIGURATION
+.vscode/*
+cspell.json
+.eslintrc.json
+.editorconfig
+.prettierrc
+.babelrc
+.npmrc
+
+
+# PROJECT FILES & DEPENDANCIES
+node_modules
+package-lock.json
+.Env
+
+
+# TYPESCRIPT / JAVASCRIPT
+module/*
+*.js
+*.mjs
+*.cjs
+*.cts
+
+
+# TEMPRARY FILES
+log/
+.tmp/
+.npm/*
+.cache/
+*.log
+*.txt
+
+
+# DIRECTORIES UNIQUE TO THIS BRANCH (JAYD3V's WORKSPACE)
+.trash/*
+workspace/*
+sandbox.test.ts

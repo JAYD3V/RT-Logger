@@ -1,0 +1,9 @@
+{
+    "$schema": "./rt-logger-scheme.json",
+    "errorTypes": {
+        "FILE_READ_ERROR": {
+            "mesg": "An error occurred while attempting to read the file ${fpath}",
+            "argument": "filepath"
+        }
+    }
+}
