@@ -1,102 +1,34 @@
-# ESM Project Template
+# Nodejs Runtime Logger
 
-This is a **project template** (aka pre-configured software environment) for an **ESM Module** that runs in the **Node.js** runtime-environment, and is written in the Statically typed ECMAScript language, **TypeScript**. This template includes a package.json file that has a pre-defined ***dev-dependencies list***, which includes, ESLint, Prettier, TypeScript & Mocha. The template attempts to pre-configure all of the tools, as well as including some configuration for VSCode. This is not a template that will work for every persons intents & purposes, however, for those it does work for, it is a huge time saver.
+***Node.js Runtime Logger*** is a logger, _"obviously"_, that helps to log errors
+during runtime. The purpose of _"Yet another logger"_ was to create somthing more
+contemporary. Many of the other loggers were not valid options for me because they
+implimeted deprecated code I didn't want to use in a project, or they didn't really
+add anything extra, from the logging that standard Node.js & ECMAScript offers.
 
-
-
-## Project Template's Tech Stack:
-
-1. **Node.js & NPM**
-2. **TypeScript**
-3. **ECMAS Module (ESM)**
-
-**NOTE:** _The template assumes the use of VSCode, but does not require it. It also includes some configuration for a VSCode extension project, which can simply be deleted if its not needed._
-
-<br>
-
-## **Development Environment & Tools**
-
-1. ### **Visual Studio Code**, 
-    - **VSC/Chrome Debugger Ext**
-    - _`.vscode/launch.json`_
-    - _`.vscode/settings.json`_
-    - _`.vscode/tasks.json`_
-
-2. ### **ESLint**
-    - **ESLint NPM Module**
-    - _`.eslintrc.json`_
-    - _`.eslintignore`_
-
-3. ### **Prettier**
-    - **Prettier NPM Module**
-    - ***`.prettierrc`***
-
-4. ### **EditorConfig**
-    - **`.editorconfig`**
-
-<br>
-<br>
+**Noee.js RT-Logger** impiments the following features:
+- Colored error printing.
+- Runtime logging to logs.
+- Configurable logging (w/ custom config file)
+- Self Describing Error Meta Objects
 
 
 
-## **Dependency List**
+### Intro Excerpt Continued...
+**Nodejs RT Logger** is more than just a logger: Its a logger with built in support for
+functionality that requires the use of several modules. The original aim of RT-Logger
+was to create a logger that was better suited for contemporary node development than
+whats currently available. One contemporary problem, which I don't see being fixed
+anytime soon, is the oversized node_modules folder that just about every node project
+has to maintain in order to stay operable. ***Nodejs Runtime Logger*** address this
+issue by building built in functionality. The purpose, and result, is two-fold:
 
-##### _The list below includes all dependencies that are auto-installed when the project template's repository is cloned from github._
+1. ***Nodejs RT Logger*** doesn't use any dependencies. Anything functionality that it
+requires is hard-coded into it.
 
-> ##### **typescript**
-> ##### **mocha**
-> ##### **semver**
-> ##### **prettier**
-> ##### **eslint**
-> ##### **eslint-config-standard**
-> ##### **eslint-plugin-import**
-> ##### **eslint-plugin-node**
-> ##### **eslint-plugin-promise**
-> ##### **@typescript-eslint/eslint-plugin**
-> ##### **@typescript-eslint/parser**
-
-<br>
-
-## **Types Included:**
-
-The following types are located inside of the `types` directory @ `${rootDir}/types`. The `types` directory also includes _**any and all**_ locally defined types (typings) @ `${rootDir}/types/typings`
-
-- **@types/node**
-- **@types/mocha**
-- **@types/json5** (Delete if you use JSONC/JSON instead of JSON5)
-- **@types/json-schema** (Delete if your not using schema for implemented JSON)
-- **@types/vscode** (Delete if the project is not a VS Code extension)
-
-<br>
-
-## Configurations Included:
-
-- Testing Framework **Mocha**
-- Project File Structure for **TypeScript**
-- a `tsconfig.json` file
-- a `.gitignore` file
-- a `.npmignore` file
-- a `.npmrc` file
-
-<br>
-
----
-
-<br>
-
-### Further Details & Notes:
-
-###### * _This template doesn't add any dependencies that are not Development-dependencies, in other words: The project template isn't so much a starting point for a project, or even a project template, as much as it is a pre configured development environment that starts its users off with a blank slate for an ESM module written in TypeScript for Node.js._
-
-###### * _The most work creating this project, has been configuring ESLint. The dependency list above demonstrates the amount of open source work that has been put into making a JavaScript linter work w/ TypeScript, Node.js, & ESM._ 
-
-<br>
-<br>
-<br>
-<br>
-
----
-
-(end)
-
-<br>
+2. Any support &/or functionality that needed to be added to ***Nodejs RT-Logger*** from
+a module, was added by hard coding it strait into the ***RT-Logger*** project instead,
+as a consequence; *Nodejs RT Logger* ships with a few libraries that can be used by
+projects that download **Nodejs RT-Logger**. Using the built-in libraries will reduce
+your over all module count, and is a small step towards a more maintainable, smaller,
+app/program, therefore, its suggested to do so if possible.

@@ -40,4 +40,5 @@ log/
 # DIRECTORIES UNIQUE TO THIS BRANCH (JAYD3V's WORKSPACE)
 .trash/*
 workspace/*
-sandbox.test.ts
+*/sandbox.*
+

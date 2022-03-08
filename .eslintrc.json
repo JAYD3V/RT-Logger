@@ -25,6 +25,7 @@
         "no-else-return": ["error"],
         "no-useless-return": ["error"],
         "comma-dangle": ["error", "never"],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": [
             "error",
             "single",

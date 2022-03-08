@@ -1,19 +1,27 @@
 {
     "name": "rt-logger",
-    "main": "./module/main.js",
-    "author": "A. J. Chambers Jr. (JAYD3V)",
-    "license": "MIT",
-    "type": "module",
-    "typings": "./typings",
-    "version": "0.0.0",
-    "description": "This is a **project template** (aka pre-configured software environment) for an **ESM Module** that runs in the **Node.js** runtime-environment, and is written in the Statically typed ECMAScript language, **TypeScript**. This template includes a package.json file that has a pre-defined ***dev-dependencies list***, which includes, ESLint, Prettier, TypeScript & Mocha. The template attempts to pre-configure all of the tools, as well as including some configuration for VSCode. This is not a template that will work for every persons intents & purposes, however, for those it does work for, it is a huge time saver.",
-    "scripts": {
-        "test": "mocha"
+
+    "author": {
+        "email": "W3Dojo@Gmail.com",
+        "name": "Andrew Chambers",
+        "url": "Https://GitHub.com/JAYD3V"
     },
+
+    "type": "module",
+    "license": "MIT",
+    "version": "0.0.0",
+    "main": "./module/main.js",
+    "typings": "./typings",
+    "bugs": "https://github.com/JAYD3V/RT-Logger/issues",
+    "homepage": "https://github.com/JAYD3V/RT-Logger#readme",
+
     "repository": {
         "type": "git",
         "url": "git+https://github.com/JAYD3V/RT-Logger.git"
     },
+
+    "description": "This is a **project template** (aka pre-configured software environment) for an **ESM Module** that runs in the **Node.js** runtime-environment, and is written in the Statically typed ECMAScript language, **TypeScript**. This template includes a package.json file that has a pre-defined ***dev-dependencies list***, which includes, ESLint, Prettier, TypeScript & Mocha. The template attempts to pre-configure all of the tools, as well as including some configuration for VSCode. This is not a template that will work for every persons intents & purposes, however, for those it does work for, it is a huge time saver.",
+
     "keywords": [
         "Runtime",
         "Logger",
@@ -49,10 +57,7 @@
         ".mjs",
         ".js"
     ],
-    "bugs": {
-        "url": "https://github.com/JAYD3V/RT-Logger/issues"
-    },
-    "homepage": "https://github.com/JAYD3V/RT-Logger#readme",
+
     "devDependencies": {
         "@types/json-schema": "^7.0.9",
         "@types/mocha": "^9.1.0",
@@ -68,5 +73,9 @@
         "prettier": "2.5.1",
         "semver": "^7.3.5",
         "typescript": "^4.7.0-dev.20220305"
+    },
+    "scripts": {
+        "sandboxTest": "tsc && node ./module/test/.test.js",
+        "test": "mocha ./module/test"
     }
 }
