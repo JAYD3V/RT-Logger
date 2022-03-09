@@ -1,34 +1,60 @@
-# Nodejs Runtime Logger
+# CLI Color-Support
 
-***Node.js Runtime Logger*** is a logger, _"obviously"_, that helps to log errors
-during runtime. The purpose of _"Yet another logger"_ was to create somthing more
-contemporary. Many of the other loggers were not valid options for me because they
-implimeted deprecated code I didn't want to use in a project, or they didn't really
-add anything extra, from the logging that standard Node.js & ECMAScript offers.
+## ANSI Standardized Colors API
 
-**Noee.js RT-Logger** impiments the following features:
-- Colored error printing.
-- Runtime logging to logs.
-- Configurable logging (w/ custom config file)
-- Self Describing Error Meta Objects
+#### SECTION CONTENTS
+    1. Class ANSIEscapeCode
+        a. ANSIEscapeCode.fgColor(colorName)
+        b. ANSIEscapeCode.bgColor(colorName)
+        c. ANSIEscapeCode.textStyle(styleType)
+
+- **Type:** Class (static)
+
+- **Class:** ANSIEscapeCode
+    - **Summary:** - `ANSIEscapeCode` is a static class that provides support for
+    referencing ANSI codes by name. This class has two other
+     function-members as well:   &
 
 
+- **Function-members:**
+    - `ANSIEscapeCode.fgColor(colorName: str) => num`
+        - **Summary:** Converts the name of a color (so long as the colors name is one that's supported by ANSI color standards) into the colors coresponding ANSI Foreground Color Code. It should be noted that background colors, and foreground colors have different codes for the same colors). To see a complete list of the colors supported by ANSI, refer to the table below.
 
-### Intro Excerpt Continued...
-**Nodejs RT Logger** is more than just a logger: Its a logger with built in support for
-functionality that requires the use of several modules. The original aim of RT-Logger
-was to create a logger that was better suited for contemporary node development than
-whats currently available. One contemporary problem, which I don't see being fixed
-anytime soon, is the oversized node_modules folder that just about every node project
-has to maintain in order to stay operable. ***Nodejs Runtime Logger*** address this
-issue by building built in functionality. The purpose, and result, is two-fold:
+    - `ANSIEscapeCode.bgColor(colorName: str) => num`
+    - `ANSIEscapeCode.testStyle(styleType: str) => num`
 
-1. ***Nodejs RT Logger*** doesn't use any dependencies. Anything functionality that it
-requires is hard-coded into it.
+- The table below lists the colors supported by ANSI, and the three methods above, as well as, the correct semantics to use when referencing a color in one of the methods arguments.
 
-2. Any support &/or functionality that needed to be added to ***Nodejs RT-Logger*** from
-a module, was added by hard coding it strait into the ***RT-Logger*** project instead,
-as a consequence; *Nodejs RT Logger* ships with a few libraries that can be used by
-projects that download **Nodejs RT-Logger**. Using the built-in libraries will reduce
-your over all module count, and is a small step towards a more maintainable, smaller,
-app/program, therefore, its suggested to do so if possible.
+---------------------------------------------------
+
+
+The first table covers the arguments/colors that can be passed to `ANSIEscapeCode.fgColor(colorName)` & `ANSIEscapeCode.bgColor(colorName)`
+
+###### _The following column descriptions apply to both table below._
+
+- ###### Output color The actual color of the text.
+
+- ###### Argument The correct semantics to use when referencing a color in an argument that is being passed to the parameter of  `ANSIEscapeCode` classes arguments.
+
+- ###### Short An alternate shorthand to pass to the function arguments
+
+|  Output Color  | Argument        | Short | ANSI |
+| -------------: | --------------: | :---: | :--- |
+|  Black         | &nbsp; black    |  b    |  30  |
+|  Red           | &nbsp; red      |  r    |  31  |
+|  Green         | &nbsp; green    |  g    |  32  |
+|  Yellow        | &nbsp; yellow   |  y    |  33  |
+|  Blue          | &nbsp; blue     |  b    |  34  |
+|  Purple        | &nbsp; purple   |  p    |  35  |
+|  Cyan          | &nbsp; cyan     |  c    |  36  |
+|  White         | &nbsp; white    |  w    |  37  |
+|  Bright Black  | &nbsp; black!   |  b!   |  40  |
+|  Bright Red    | &nbsp; red!     |  r!   |  41  |
+|  Bright Green  | &nbsp; green!   |  g!   |  42  |
+|  Bright Yellow | &nbsp; yellow!  |  y!   |  43  |
+|  Bright Blue   | &nbsp; blue!    |  b!   |  44  |
+|  Bright Purple | &nbsp; purple!  |  p!   |  45  |
+|  Bright Cyan   | &nbsp; cyan!    |  c!   |  46  |
+|  Bright White  | &nbsp; white!   |  w!   |  47  |
+
+---

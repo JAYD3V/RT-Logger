@@ -8,7 +8,6 @@
  *  sequences & color codes."
  * @license MIT
  * -----------------------------------------------------------------------------------  */
-
 /**
  *
  * ### Function Generator
@@ -27,35 +26,13 @@
  * @param boldFg
  * @returns
  */
-type ColorConf = {
+declare type ColorConf = {
     fg?: string;
     bg?: string;
     style?: string;
 };
-
-export class ANSIColorFmt {
-    log (output: string, args: [string | number], config: ColorConf) {
-        args.forEach(arg => {
-            if (typeof arg === 'string') {
-                output.replace('%s', arg);
-            } else if (typeof arg === 'number') {
-                output.replace('%d', arg.toString());
-            } else {
-                throw new TypeError(
-                    '\nCLASS NAME: `ANSIColorFormat`\n' +
-                        'MEMBER FUNC: `log(args...)`\n' +
-                        'CAUSE: An Argument passed to `log` was of an invalid type.' +
-                        `INVALID ARGUMENT: ${arg}` +
-                        `INVALID VALID: ${typeof arg}`
-                );
-            }
-            console.log(arg);
-        });
-    }
-
-    #addANSIColorCodesToString (fg: number, bg?: number | null, style?: number | null) {
-        const openEsc = style ? `\x1b[${style};` : `\x1b[0;`;
-        return bg ? `${openEsc}${fg};${bg}m` : `${openEsc}${fg}m`;
-    }
+declare class ANSIColorFmt {
+    #private;
+    log(output: string, args: [string | number], config: ColorConf): void;
 }
-
+//# sourceMappingURL=color-ansi.d.ts.map

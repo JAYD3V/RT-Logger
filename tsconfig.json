@@ -26,5 +26,5 @@
 
     // Source Control Management
     "exclude": ["build", "*.js", "mjs", "*.cjs", "*.cts"],
-    "include": ["source/**/*", "*.ts", "*.mts", "source/test/.test.ts"]
+    "include": ["source/**/*", "*.ts", "*.mts", "source/test/.test.ts", ".tmp/sandbox.ts"]
 }
