@@ -1,60 +1,100 @@
-# CLI Color-Support
+# Vibrant: Color API for Node.js
 
-## ANSI Standardized Colors API
+**VIBRANT** is a color library & API for Node.js. Most people will use it for its color library to elegantly color their console's output, or to for a quick yet tidy means for adding color to their CLI. VIBRANT also has an API aspect to it, which allows developers to quickly write there own functions for coloring output using ANSI Color codes. The module is well documented, and has many features. It is important to note that the module has only been recently released and is in beta. If you pick it up, and try it out, please provide me with any feedback you have &/or bugs that you find, as well as any mistakes in this documentation.
 
-#### SECTION CONTENTS
-    1. Class ANSIEscapeCode
-        a. ANSIEscapeCode.fgColor(colorName)
-        b. ANSIEscapeCode.bgColor(colorName)
-        c. ANSIEscapeCode.textStyle(styleType)
-
-- **Type:** Class (static)
-
-- **Class:** ANSIEscapeCode
-    - **Summary:** - `ANSIEscapeCode` is a static class that provides support for
-    referencing ANSI codes by name. This class has two other
-     function-members as well:   &
+<br>
+<br>
 
 
-- **Function-members:**
-    - `ANSIEscapeCode.fgColor(colorName: str) => num`
-        - **Summary:** Converts the name of a color (so long as the colors name is one that's supported by ANSI color standards) into the colors coresponding ANSI Foreground Color Code. It should be noted that background colors, and foreground colors have different codes for the same colors). To see a complete list of the colors supported by ANSI, refer to the table below.
+## Table of Contents
 
-    - `ANSIEscapeCode.bgColor(colorName: str) => num`
-    - `ANSIEscapeCode.testStyle(styleType: str) => num`
+1. **Class: RefANSICodeByName**
+    * **1.1** &nbsp; &nbsp; Member Function: `fgColor(colorName)`
+    * **1.2** &nbsp; &nbsp; Member Function: `bgColor(colorName)`
+    * **1.3** &nbsp; &nbsp; Member Function: `textStyle(styleType)`
 
-- The table below lists the colors supported by ANSI, and the three methods above, as well as, the correct semantics to use when referencing a color in one of the methods arguments.
+2. **Specific Parameters** & **ANSI Color Support**
+    * **2.1** &nbsp; &nbsp; Table Reference for `colorName` & ANSI supported colors
+    * **2.2** &nbsp; &nbsp; Table Reference for `styleType` & ANSI supported text-styles
+
+---
+
+<br>
+<br>
+
+
+## Sect 1: Referencing ANSI Codes By Name
+#### Topic: "Class RefANSICodeByName"
+The **RefANSICodeByName** class converts color-names & style-names into ANSI Escape codes so that color names & style names can be used in string form to apply the colors & styles the reference to terminal output.
+
+This class its-self shouldn't be used in the actual formatting of terminal output, but rather in the creation
+of custom functions used to format terminal output.
+
+##### _The output is hello world, but its foreground is yellow, its backround is read, its text is styled to be italic._
+
+<!-- TODO: Add Screen Shot -->
+
+- #### 1.1 &nbsp;~&nbsp; `RefANSICodeByName.fgColor(colorName)`
+    * **Static Method**
+    * `fgColor()` converts colors names into ANSI Escape codes. The color name passed into fgColor must be an ANSI supported color. Each color ANSI supports coresponds to two specific codes, one for formatting the background color of terminal output, and the other for formatting the foreground color of terminal output. Obviously `fgColor()` returns the code that coresponds to the terminal output's background color. To get the ANSI code that coresponds to the terminal output's foreground color, use `bgColor()`. _fgColor_ typically isn't used in the direct formatting of terminal output, but rather for the building of classes & functions that format terminal output. In other words, there's typically another layer of abstraction above fgColor(). That next layer should be built using fgColor & company.
+
+<br>
+
+- #### **1.2** &nbsp;~&nbsp; `RefANSICodeByName.bgColor(colorName)`
+    - **Static Method**
+    - `bgColor()` converts colors names into ANSI Escape codes. The color name passed into bgColor must be an ANSI supported color. Each color ANSI supports coresponds to two specific codes, one for formatting the background color of terminal output, and the other for formatting the foreground color of terminal output. Obviously `bgColor()` returns the code that coresponds to the terminal output's background color. To get the ANSI code that coresponds to the terminal output's foreground color, use `fgColor()`. _bgColor_ typically isn't used in the direct formatting of terminal output, but rather for the building of classes & functions that format terminal output. In other words, there's typically another layer of abstraction above bgColor(). That next layer should be built using bgColor & company.
+
+- #### **1.3** &nbsp;~&nbsp; `RefANSICodeByName.textStyle(styleType)`
+    - **Static Method**
+    - `textStyle()` converts text-style names (_i.e._ italic, bold, etc) into the ANSI escape-code that coresponds to the name passed in as an argument to textStyle. Like the other two **`RefANSICodeByName`** functions, textStyle shouldn't be used to directly format terminal output, but rather to create custom functions that style terminalOutput. In other words, there's typically another layer of abstraction above textStyle(). That next layer should be built using textStyle & company.
+
+    ###### _NOTE: When I use the term company, I am referencing other methods within the same class._
 
 ---------------------------------------------------
 
+<br>
 
-The first table covers the arguments/colors that can be passed to `ANSIEscapeCode.fgColor(colorName)` & `ANSIEscapeCode.bgColor(colorName)`
+## 2.0 | ANSI Support & Parameters Defined by ANSI Support
 
-###### _The following column descriptions apply to both table below._
+&nbsp; &nbsp; &nbsp; &nbsp; The colors/styles that are supported by _ANSI Escape-codes_ are listed bellow. ANSI can be a bit confusing at first because of the way that it targets specific properties of the terminals output. ANSI uses a completely different number for the same color, when it is being used to color the background, than when it is being used to color the foreground. So if we use blue for an example, blue foreground is colored using the code `34`, but if we want to color the background blue we would use `44`.
 
-- ###### Output color The actual color of the text.
+&nbsp; &nbsp; &nbsp; &nbsp; It also only offers a handful of colors, but it offers two versions of each color, so if we continue to use blue in our example, we would show that, blue foregrounds are styled using the number `34`, and bright blue foregrounds are styled using `94`, and if we wanted a bright blue background we would use `104`
 
-- ###### Argument The correct semantics to use when referencing a color in an argument that is being passed to the parameter of  `ANSIEscapeCode` classes arguments.
+###### _To Summarize:_
+  * Standard-blue Foreground = `34`
+  * Standard-blue Background = `44`
+  * Bright-blue Foreground = `94`
+  * Bright-blue Background = `104`
 
-- ###### Short An alternate shorthand to pass to the function arguments
+###### NOTE: _You can see that there are some consistant patterns implimented in the standard._ _The ANSI color standard is old, its one of the old still in use. Another old standard is ANSI C._ Its important to point out
 
-|  Output Color  | Argument        | Short | ANSI |
-| -------------: | --------------: | :---: | :--- |
-|  Black         | &nbsp; black    |  b    |  30  |
-|  Red           | &nbsp; red      |  r    |  31  |
-|  Green         | &nbsp; green    |  g    |  32  |
-|  Yellow        | &nbsp; yellow   |  y    |  33  |
-|  Blue          | &nbsp; blue     |  b    |  34  |
-|  Purple        | &nbsp; purple   |  p    |  35  |
-|  Cyan          | &nbsp; cyan     |  c    |  36  |
-|  White         | &nbsp; white    |  w    |  37  |
-|  Bright Black  | &nbsp; black!   |  b!   |  40  |
-|  Bright Red    | &nbsp; red!     |  r!   |  41  |
-|  Bright Green  | &nbsp; green!   |  g!   |  42  |
-|  Bright Yellow | &nbsp; yellow!  |  y!   |  43  |
-|  Bright Blue   | &nbsp; blue!    |  b!   |  44  |
-|  Bright Purple | &nbsp; purple!  |  p!   |  45  |
-|  Bright Cyan   | &nbsp; cyan!    |  c!   |  46  |
-|  Bright White  | &nbsp; white!   |  w!   |  47  |
+##### For example:
+
+The ansi code for Blue Foreground is `34`, and the
+
+---
+
+<br>
+
+##### _The table below lists all of the Supported Colors, Semantics & Shorthands that can be passed to any `colorName` parameter_
+
+|  Output Color    | Argument               | Short   | `fgColor()` | `bgColor()` |
+|----------------: |----------------------: | :-----: | :---------: | :---------: |
+| **Black**        | &nbsp; `'black'`       |  **k**  |  30         | 40          |
+| **Red**          | &nbsp; `'red'`         |  **r**  |  31         | 41          |
+| **Green**        | &nbsp; `'green'`       |  **g**  |  32         | 42          |
+| **Yellow**       | &nbsp; `'yellow'`      |  **y**  |  33         | 43          |
+| **Blue**         | &nbsp; `'blue'`        |  **b**  |  34         | 44          |
+| **Magenta**      | &nbsp; `'magenta'`     |  **p**  |  35         | 45          |
+| **Cyan**         | &nbsp; `'cyan'`        |  **c**  |  36         | 46          |
+| **White**        | &nbsp; `'white'`       |  **w**  |  37         | 47          |
+| **Bright Black** | &nbsp; `'brightBlack'` |  **k!** |  90         | 100         |
+| **Bright Red**   | &nbsp; `'brightRed'`   |  **r!** |  91         | 101         |
+| **Bright Green** | &nbsp; `'brightGreen'` |  **g!** |  92         | 102         |
+| **Bright Yellow**| &nbsp; `'brightYellow'`|  **y!** |  93         | 103         |
+| **Bright Blue**  | &nbsp; `'brightBlue'`  |  **b!** |  94         | 104         |
+| **Bright Purple**| &nbsp; `'brightPurple'`|  **p!** |  95         | 105         |
+| **Bright Cyan**  | &nbsp; `'brightCyan'`  |  **c!** |  96         | 106         |
+| **Bright White** | &nbsp; `'brightWhite'` |  **w!** |  97         | 107         |
 
 ---

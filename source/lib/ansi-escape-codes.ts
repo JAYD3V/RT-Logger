@@ -1,9 +1,6 @@
-// DO NOT ALTER/CHANGE THE `ANSIEscapeCodes` OBJECT OR ANY OF ITS KEYS &/or VALUES
-// THIS FILE SHOULD BE A READ ONLY ENTITY
-
 type ANSIEscCode = number;
 
-interface ANSIEscapeCodes {
+interface ANSIEscCodes {
     // TEXT STYLES
     readonly textStyleDefault: ANSIEscCode;
     readonly textStyleBold: ANSIEscCode;
@@ -56,7 +53,7 @@ interface ANSIEscapeCodes {
     readonly bgBrightWhite: ANSIEscCode;
 }
 
-const ansiEscCodes: ANSIEscapeCodes = {
+const ansiEscCodes: ANSIEscCodes = {
     // TEXT STYLE
     textStyleDefault: 0, // Common Aliases: Standard, Regular, None
     textStyleBold: 1,
@@ -109,123 +106,218 @@ const ansiEscCodes: ANSIEscapeCodes = {
     bgBrightWhite: 107
 };
 
-export class ANSIEscapeCode {
+/**
+ * The **RefANSICodeByName** class converts color-names & style-names into ANSI Esc codes
+ * so that color names & style names can be used in string form to apply the colors &
+ * styles the reference to terminal output */
+export class RefANSICodeByName {
     /**
-     * This function converts the name of a color (so long as the color is supported by
-     * the ANSI color standard) into the ANSI Color code for the colors name being passed
-     * into colorName. For a list of the correct semantics to use, and all colors that are
-     * supported, when using this function-member @see *The markdown table below*. To find
-     * a more complete documentation source @see ***README.md***.
+     * ### Static Method
      *
-     * @static
-     * @param colorName Takes the name of a color. Be sure that the semantics are correct
-     * when passing a colors name into this parameter. Shorthand's are supported @see the
-     * Table below, or README.md
-     * @returns The ANSI Color code that coresponds to the color passed into parameter
-     * `colorName`.
+     * _To reference a list of all valid arguments available to be passed to this method,
+     * all colors supported by the ANSI color-standard, and shorthands that can be used
+     * see README.md Sect-1.2_
      *
-     * ##### Note: The bright color names & the shorthands are the same as the standard
-     * color names & shorthands, except that the bright colors have an exclamation mark
-     * `!` prepended to the end of them.
+     *  `fgColor()` converts colors names into ANSI Escape codes. The color name passed
+     * into fgColor must be an ANSI supported color. Each color ANSI supports coresponds
+     * to two specific codes, one for formatting the background color of terminal output,
+     * and the other for formatting the foreground color of terminal output. Obviously
+     * `fgColor()` returns the code that coresponds to the terminal output's background
+     * color. To get the ANSI code that coresponds to the terminal output's foreground
+     * color, use `bgColor()`.
      *
-     * |  Output Color  | Argument        | Short | ANSI |
-     * | -------------: | --------------: | :---: | :--- |
-     * |  Black         | &nbsp; black    |  b    |  30  |
-     * |  Red           | &nbsp; red      |  r    |  31  |
-     * |  Green         | &nbsp; green    |  g    |  32  |
-     * |  Yellow        | &nbsp; yellow   |  y    |  33  |
-     * |  Blue          | &nbsp; blue     |  b    |  34  |
-     * |  Purple        | &nbsp; purple   |  p    |  35  |
-     * |  Cyan          | &nbsp; cyan     |  c    |  36  |
-     * |  White         | &nbsp; white    |  w    |  37  |
-     * |  Bright Black  | &nbsp; black!   |  b!   |  40  |
-     * |  Bright Red    | &nbsp; red!     |  r!   |  41  |
-     * |  Bright Green  | &nbsp; green!   |  g!   |  42  |
-     * |  Bright Yellow | &nbsp; yellow!  |  y!   |  43  |
-     * |  Bright Blue   | &nbsp; blue!    |  b!   |  44  |
-     * |  Bright Purple | &nbsp; purple!  |  p!   |  45  |
-     * |  Bright Cyan   | &nbsp; cyan!    |  c!   |  46  |
-     * |  Bright White  | &nbsp; white!   |  w!   |  47  |
-     *
-     * @returns ANSIEscCode */
+     * @param colorName Takes an ANSI Supported colorname as an argument.
+     * @returns ANSI-color-code
+     **/
     static fgColor (colorName:string) {
         switch (colorName.toLowerCase().trim()) {
             case 'red':
                 return ansiEscCodes.fgRed;
-            case '*red':
+            case 'r':
+                return ansiEscCodes.fgRed;
+            case 'brightRed':
                 return ansiEscCodes.fgBrightRed;
+            case 'r+':
+                return ansiEscCodes.fgBrightRed;
+
             case 'green':
                 return ansiEscCodes.fgGreen;
-            case '*green':
+            case 'g':
+                return ansiEscCodes.fgGreen;
+            case 'brightGreen':
                 return ansiEscCodes.fgBrightGreen;
+            case 'g+':
+                return ansiEscCodes.fgBrightGreen;
+
             case 'yellow':
                 return ansiEscCodes.fgYellow;
-            case '*yellow':
+            case 'y':
+                return ansiEscCodes.fgYellow;
+            case 'brightYellow':
                 return ansiEscCodes.fgBrightYellow;
+            case 'y+':
+                return ansiEscCodes.fgBrightYellow;
+
             case 'blue':
                 return ansiEscCodes.fgBlue;
-            case '*blue':
+            case 'b':
+                return ansiEscCodes.fgBlue;
+            case 'brightBlue':
                 return ansiEscCodes.fgBrightBlue;
+            case 'b+':
+                return ansiEscCodes.fgBrightBlue;
+
             case 'magenta':
                 return ansiEscCodes.fgMagenta;
-            case '*magenta':
+            case 'm':
+                return ansiEscCodes.fgMagenta;
+            case 'brightMagenta':
                 return ansiEscCodes.fgBrightMagenta;
+            case 'm+':
+                return ansiEscCodes.fgBrightMagenta;
+
             case 'cyan':
                 return ansiEscCodes.fgCyan;
-            case '*cyan':
+            case 'c':
+                return ansiEscCodes.fgCyan;
+            case 'brightCyan':
                 return ansiEscCodes.fgBrightCyan;
+            case 'c+':
+                return ansiEscCodes.fgBrightCyan;
+
             case 'black':
                 return ansiEscCodes.fgBlack;
-            case '*black':
+            case 'k':
+                return ansiEscCodes.fgBlack;
+            case 'brightBlack':
                 return ansiEscCodes.fgBrightBlack;
+            case 'k+':
+                return ansiEscCodes.fgBrightBlack;
+
             case 'white':
                 return ansiEscCodes.fgWhite;
-            case '*white':
+            case 'w':
+                return ansiEscCodes.fgWhite;
+            case 'brightWhite':
                 return ansiEscCodes.fgBrightWhite;
+            case 'w+':
+                return ansiEscCodes.fgBrightWhite;
+
             default:
                 return ansiEscCodes.fgWhite;
         }
     }
 
+    /**
+     * ### Static Method
+     *
+     * _To reference a list of all valid arguments available to be passed to this method,
+     * all colors supported by the ANSI color-standard, and shorthands that can be used
+     * see README.md Sect-1.2_
+     *
+     * `bgColor()` converts colors names into ANSI Escape codes. The color name passed
+     * into bgColor must be an ANSI supported color. Each color ANSI supports coresponds
+     * to two specific codes, one for formatting the background color of terminal output,
+     * and the other for formatting the foreground color of terminal output. Obviously
+     * `bgColor()` returns the code that coresponds to the terminal output's background
+     * color. To get the ANSI code that coresponds to the terminal output's foreground
+     * color, use `fgColor()`.
+     *
+     * @param colorName Takes an ANSI Supported colorname as an argument.
+     * @returns ANSI-color-code
+     **/
     static bgColor (colorName: string) {
         switch (colorName.toLowerCase().trim()) {
             case 'red':
                 return ansiEscCodes.bgRed;
-            case '*red':
+            case 'r':
+                return ansiEscCodes.bgRed;
+            case 'brightRed':
                 return ansiEscCodes.bgBrightRed;
+            case 'r+':
+                return ansiEscCodes.bgBrightRed;
+
             case 'green':
                 return ansiEscCodes.bgGreen;
-            case '*green':
+            case 'g':
+                return ansiEscCodes.bgGreen;
+            case 'brightGreen':
                 return ansiEscCodes.bgBrightGreen;
+            case 'g+':
+                return ansiEscCodes.bgBrightGreen;
+
             case 'yellow':
                 return ansiEscCodes.bgYellow;
-            case '*yellow':
+            case 'y':
+                return ansiEscCodes.bgYellow;
+            case 'brightYellow':
                 return ansiEscCodes.bgBrightYellow;
+            case 'y+':
+                return ansiEscCodes.bgBrightYellow;
+
             case 'blue':
                 return ansiEscCodes.bgBlue;
-            case '*blue':
+            case 'b':
+                return ansiEscCodes.bgBlue;
+            case 'brightBlue':
                 return ansiEscCodes.bgBrightBlue;
+            case 'b+':
+                return ansiEscCodes.bgBrightBlue;
+
             case 'magenta':
                 return ansiEscCodes.bgMagenta;
-            case '*magenta':
+            case 'm':
+                return ansiEscCodes.bgMagenta;
+            case 'brightMagenta':
                 return ansiEscCodes.bgBrightMagenta;
+            case 'm+':
+                return ansiEscCodes.bgBrightMagenta;
+
             case 'cyan':
                 return ansiEscCodes.bgCyan;
-            case '*cyan':
+            case 'c':
+                return ansiEscCodes.bgCyan;
+            case 'brightCyan':
                 return ansiEscCodes.bgBrightCyan;
+            case 'c+':
+                return ansiEscCodes.bgBrightCyan;
+
             case 'black':
                 return ansiEscCodes.bgBlack;
-            case '*black':
+            case 'k':
+                return ansiEscCodes.bgBlack;
+            case 'brightBlack':
                 return ansiEscCodes.bgBrightBlack;
+            case 'k+':
+                return ansiEscCodes.bgBrightBlack;
+
             case 'white':
                 return ansiEscCodes.bgWhite;
-            case '*white':
+            case 'w':
+                return ansiEscCodes.bgWhite;
+            case 'brightWhite':
+                return ansiEscCodes.bgBrightWhite;
+            case 'w+':
                 return ansiEscCodes.bgBrightWhite;
             default:
                 return ansiEscCodes.bgWhite;
         }
     }
 
+    /**
+     * _To reference a list of all valid arguments available to be passed to this method,
+     * all colors supported by the ANSI color-standard, and shorthands that can be used
+     * see README.md Sect-1.2_
+     *
+     * `textStyle()` converts text-style names (_i.e._ italic, bold, etc) into the ANSI
+     * escape-code that coresponds to the name passed in as an argument to textStyle.
+     * Like the other two **`RefANSICodeByName`** functions, textStyle shouldn't be used
+     * to directly format terminal output, but rather to create custom functions that
+     * style terminalOutput.
+     *
+     * @param styleType String that references style by name (i.e. italic, bold, etc...)
+     * @returns The ANSI Escape code that coresponds to the styles name passed in.
+     *  */
     static textStyle (styleType:string) {
         switch (styleType.trim().toLowerCase()) {
             case '':
