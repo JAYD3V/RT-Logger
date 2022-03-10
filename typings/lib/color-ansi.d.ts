@@ -31,8 +31,9 @@ declare type ColorConf = {
     bg?: string;
     style?: string;
 };
-declare class ANSIColorFmt {
+export declare class ANSIColorFmt {
     #private;
     log(output: string, args: [string | number], config: ColorConf): void;
 }
+export {};
 //# sourceMappingURL=color-ansi.d.ts.map

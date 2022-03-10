@@ -25,6 +25,19 @@
     },
 
     // Source Control Management
-    "exclude": ["build", "*.js", "mjs", "*.cjs", "*.cts"],
-    "include": ["source/**/*", "*.ts", "*.mts", "source/test/.test.ts", ".tmp/sandbox.ts"]
+    "exclude": [
+        "build/**/*", // Don't try & compile the compilers output silly!
+        "res/**/*", // Resources do not need to be compiled
+        "*.tmp/", // Local Temporary File (Doesn't Exist in Repo)
+        ".vscode/", // VSCode Configuration Dir (Doesn't Exist in Repo)
+        "*.js", // JavaScript Files
+        "*.mjs", // ESM JavaScript Files
+        "*.cjs", // Common JavaScript Files
+        "*.cts" // Common TypeScript Files
+    ],
+    "include": [
+        "source/**/*",
+        "*.ts", // All TypeScript Files
+        "*.mts" // All ESM TypeScript Files
+    ]
 }

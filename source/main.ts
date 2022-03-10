@@ -7,17 +7,16 @@
  * it will receive its first instructions from this file.
  * <!---------------------------------------------------------------------------------> */
 
-function clrFmtStr (fg: number, bg?: number | null, style?: number | null) {
-    const openEsc = style
-        ? `\x1b[${style};`
-        : `\x1b[0;`;
+import RefANSICodeByName from './lib/ansi-escape-codes.js';
 
-    return bg
-        ? `${openEsc}${fg};${bg}m`
-        : `${openEsc}${fg}m`;
-}
+const sumStr = 'ANSI codes are fun!';
+const close = '\x1b[0m';
 
-const str = clrFmtStr(31, 40, 3) + 'Hello World' + '\x1b[0m';
+const fg = RefANSICodeByName.fgColor('Red');
+const bg = RefANSICodeByName.bgColor('Black');
+const style = RefANSICodeByName.textStyle('bold');
 
+const escSequence = `\x1b[${style};${fg};${bg}m${sumStr}${close}`;
 
-console.log('\n%s\n', str);
+console.log(escSequence);
+

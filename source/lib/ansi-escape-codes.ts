@@ -1,59 +1,4 @@
-type ANSIEscCode = number;
-
-interface ANSIEscCodes {
-    // TEXT STYLES
-    readonly textStyleDefault: ANSIEscCode;
-    readonly textStyleBold: ANSIEscCode;
-    readonly textStyleItalic: ANSIEscCode;
-    readonly textStyleUnderline: ANSIEscCode;
-    readonly textStyleColorInversion: ANSIEscCode;
-    readonly textStyleHidden: ANSIEscCode;
-    readonly textStyleStikeThrough: ANSIEscCode;
-
-    // FOREGROUND COLORS
-    readonly fgRed: ANSIEscCode;
-    readonly fgGreen: ANSIEscCode;
-    readonly fgYellow: ANSIEscCode;
-    readonly fgBlue: ANSIEscCode;
-    readonly fgMagenta: ANSIEscCode;
-    readonly fgCyan: ANSIEscCode;
-    readonly fgWhite: ANSIEscCode;
-    readonly fgBlack: ANSIEscCode;
-    readonly fgDefault: ANSIEscCode;
-
-    // BRIGHT FOREGROUND COLORS
-    readonly fgBrightRed: ANSIEscCode;
-    readonly fgBrightGreen: ANSIEscCode;
-    readonly fgBrightYellow: ANSIEscCode;
-    readonly fgBrightBlue: ANSIEscCode;
-    readonly fgBrightMagenta: ANSIEscCode;
-    readonly fgBrightCyan: ANSIEscCode;
-    readonly fgBrightWhite: ANSIEscCode;
-    readonly fgBrightBlack: ANSIEscCode;
-
-    // BACKGROUND COLORS
-    readonly bgRed: ANSIEscCode;
-    readonly bgGreen: ANSIEscCode;
-    readonly bgYellow: ANSIEscCode;
-    readonly bgBlue: ANSIEscCode;
-    readonly bgMagenta: ANSIEscCode;
-    readonly bgCyan: ANSIEscCode;
-    readonly bgWhite: ANSIEscCode;
-    readonly bgBlack: ANSIEscCode;
-    readonly bgDefault: ANSIEscCode;
-
-    // BRIGHT BACKGROUND COLORS
-    readonly bgBrightBlack: ANSIEscCode;
-    readonly bgBrightRed: ANSIEscCode;
-    readonly bgBrightGreen: ANSIEscCode;
-    readonly bgBrightYellow: ANSIEscCode;
-    readonly bgBrightBlue: ANSIEscCode;
-    readonly bgBrightMagenta: ANSIEscCode;
-    readonly bgBrightCyan: ANSIEscCode;
-    readonly bgBrightWhite: ANSIEscCode;
-}
-
-const ansiEscCodes: ANSIEscCodes = {
+const ansiEscCodes = {
     // TEXT STYLE
     textStyleDefault: 0, // Common Aliases: Standard, Regular, None
     textStyleBold: 1,
@@ -110,7 +55,7 @@ const ansiEscCodes: ANSIEscCodes = {
  * The **RefANSICodeByName** class converts color-names & style-names into ANSI Esc codes
  * so that color names & style names can be used in string form to apply the colors &
  * styles the reference to terminal output */
-export class RefANSICodeByName {
+class RefANSICodeByName {
     /**
      * ### Static Method
      *
@@ -342,3 +287,4 @@ export class RefANSICodeByName {
     }
 }
 
+export default RefANSICodeByName;

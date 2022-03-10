@@ -22,7 +22,6 @@
 <br>
 <br>
 
-
 ## Sect 1: Referencing ANSI Codes By Name
 #### Topic: "Class RefANSICodeByName"
 The **RefANSICodeByName** class converts color-names & style-names into ANSI Escape codes so that color names & style names can be used in string form to apply the colors & styles the reference to terminal output.
@@ -48,10 +47,32 @@ of custom functions used to format terminal output.
     - **Static Method**
     - `textStyle()` converts text-style names (_i.e._ italic, bold, etc) into the ANSI escape-code that coresponds to the name passed in as an argument to textStyle. Like the other two **`RefANSICodeByName`** functions, textStyle shouldn't be used to directly format terminal output, but rather to create custom functions that style terminalOutput. In other words, there's typically another layer of abstraction above textStyle(). That next layer should be built using textStyle & company.
 
-    ###### _NOTE: When I use the term company, I am referencing other methods within the same class._
+##### The following example will print the output seen in image #01
 
----------------------------------------------------
+```
+    const close = '\x1b[0m'; // Ends formatting
+    const sumStr = 'ANSI codes are fun!'; // Random string
 
+    const fg = RefANSICodeByName.fgColor('Red');
+    const bg = RefANSICodeByName.bgColor('Black');
+    const style = RefANSICodeByName.textStyle('bold');
+
+    /* The line below demonstrates formatting a string using ANSI escape
+    sequences */
+    const escSequence = `\x1b[${style};${fg};${bg}m${sumStr}${close}`;
+
+    console.log(escSequence);
+```
+
+###### _Image #01_
+[![img #01](https://i.postimg.cc/RFLr81B8/clrmod-exmp-01.png)](https://postimg.cc/HcnP8yj4)
+---
+
+###### NOTE: _If you don't format strings printed by the console carefully, you can screw up your command prompt. Its worth practicing for a while before using ANSI codes in any publicly published works. Trust me, i know from experiance..._
+
+<br>
+<br>
+<br>
 <br>
 
 ## 2.0 | ANSI Support & Parameters Defined by ANSI Support
