@@ -4,9 +4,9 @@ const ansiEscCodes = {
     textStyleBold: 1,
     textStyleItalic: 3,
     textStyleUnderline: 4,
-    textStyleColorInversion: 7,
+    textStyleInversion: 7,
     textStyleHidden: 8,
-    textStyleStikeThrough: 9,
+    textStyleStrikeThrough: 9,
 
     // FOREGROUND COLORS
     fgBlack: 30,
@@ -52,29 +52,44 @@ const ansiEscCodes = {
 };
 
 /**
- * The **RefANSICodeByName** class converts color-names & style-names into ANSI Esc codes
- * so that color names & style names can be used in string form to apply the colors &
- * styles the reference to terminal output */
-class RefANSICodeByName {
+ * The purpose of **ANSICodeByName** is to covert string references into ANSI Escape
+ * codes. For example, if a person wanted to use the code for coloring a FG blue, they
+ * would simple use the static method `ANSICodeByName.fgCode('blue')`, which would return
+ * the numeric value 34, which is the ANSI Escape code for a blue foreground. The same
+ * can be done for styles `textStyleCode(...)` & `bgCode(...)`.
+ * */
+class ANSICodeByName {
     /**
-     * ### Static Method
+     * #### Static Method
      *
-     * _To reference a list of all valid arguments available to be passed to this method,
-     * all colors supported by the ANSI color-standard, and shorthands that can be used
-     * see README.md Sect-1.2_
+     * This method coverts color-names into numeric ANSI Escape Codes for
+     * setting the foreground color of text in a terminals output. This
+     * method only return escape codes for colors that the ANSI standard
+     * supports. All ANSI Supported colors have been listed below. Single
+     * character values after the word 'or' are shorthands that can be used
+     * for the adjacent color.
      *
-     *  `fgColor()` converts colors names into ANSI Escape codes. The color name passed
-     * into fgColor must be an ANSI supported color. Each color ANSI supports coresponds
-     * to two specific codes, one for formatting the background color of terminal output,
-     * and the other for formatting the foreground color of terminal output. Obviously
-     * `fgColor()` returns the code that coresponds to the terminal output's background
-     * color. To get the ANSI code that coresponds to the terminal output's foreground
-     * color, use `bgColor()`.
+     * ##### PLEASE NOTE: The ANSI Escape codes for bg & fg colors are not the same. For example. 34 is the esc code for blue, but if you try to use it for setting the bg color of a terminals output, it won't work. For setting the bg color blue, `44` is needed.
      *
-     * @param colorName Takes an ANSI Supported colorname as an argument.
-     * @returns ANSI-color-code
+     * - 'black' or 'k'
+     * - 'red' or 'r'
+     * - 'green' or 'g'
+     * - 'yellow' or 'y'
+     * - 'blue' or 'b'
+     * - 'magenta' or 'm'
+     * - 'white' or 'w'
+     * - 'brightBlack' or 'k+'
+     * - 'brightRed' or 'r+'
+     * - 'brightGreen' or 'g+'
+     * - 'brightYellow' or 'y+'
+     * - 'brightBlue' or 'b+'
+     * - 'brightMagenta' or 'm+'
+     * - 'brightWhite' or 'w+'
+     *
+     * @param colorName The name of a valid color listed above.
+     * @returns the ANSI Escape code that coresponds to the color's name passed into `colorName`.
      **/
-    static fgColor (colorName:string) {
+    static fgCode (colorName:string) {
         switch (colorName.toLowerCase().trim()) {
             case 'red':
                 return ansiEscCodes.fgRed;
@@ -154,24 +169,37 @@ class RefANSICodeByName {
     }
 
     /**
-     * ### Static Method
+     * #### Static Method
      *
-     * _To reference a list of all valid arguments available to be passed to this method,
-     * all colors supported by the ANSI color-standard, and shorthands that can be used
-     * see README.md Sect-1.2_
+     * This method coverts color-names into numeric ANSI Escape Codes for
+     * setting the background color of text in a terminals output. This
+     * method only return escape codes for colors that the ANSI standard
+     * supports. All ANSI Supported colors have been listed below. Single
+     * character values after the word 'or' are shorthands that can be used
+     * for the adjacent color.
      *
-     * `bgColor()` converts colors names into ANSI Escape codes. The color name passed
-     * into bgColor must be an ANSI supported color. Each color ANSI supports coresponds
-     * to two specific codes, one for formatting the background color of terminal output,
-     * and the other for formatting the foreground color of terminal output. Obviously
-     * `bgColor()` returns the code that coresponds to the terminal output's background
-     * color. To get the ANSI code that coresponds to the terminal output's foreground
-     * color, use `fgColor()`.
      *
-     * @param colorName Takes an ANSI Supported colorname as an argument.
-     * @returns ANSI-color-code
+     * ##### PLEASE NOTE: ANSI Escape codes for bg-colors are different than the escape codes for fg-colors, for example: `bgCode('blue')` returns `44`, while as; `fgCode(colorName)` returns 34.
+     *
+     * - 'black' or 'k'
+     * - 'red' or 'r'
+     * - 'green' or 'g'
+     * - 'yellow' or 'y'
+     * - 'blue' or 'b'
+     * - 'magenta' or 'm'
+     * - 'white' or 'w'
+     * - 'brightBlack' or 'k+'
+     * - 'brightRed' or 'r+'
+     * - 'brightGreen' or 'g+'
+     * - 'brightYellow' or 'y+'
+     * - 'brightBlue' or 'b+'
+     * - 'brightMagenta' or 'm+'
+     * - 'brightWhite' or 'w+'
+     *
+     * @param colorName The name of a valid color listed above.
+     * @returns the ANSI Escape code that coresponds to the color's name passed into `colorName`.
      **/
-    static bgColor (colorName: string) {
+    static bgCode (colorName: string) {
         switch (colorName.toLowerCase().trim()) {
             case 'red':
                 return ansiEscCodes.bgRed;
@@ -250,20 +278,25 @@ class RefANSICodeByName {
     }
 
     /**
-     * _To reference a list of all valid arguments available to be passed to this method,
-     * all colors supported by the ANSI color-standard, and shorthands that can be used
-     * see README.md Sect-1.2_
+     * This method coverts style-types into numeric ANSI Escape Codes.
+     * There are a limited number of valid arguments accepted. If an
+     * argument isn't valid the default ANSI code for styling is returned,
+     * which is `0`. A value of 0 is equal to 'No Style. Valid arguments
+     * are as follows...
      *
-     * `textStyle()` converts text-style names (_i.e._ italic, bold, etc) into the ANSI
-     * escape-code that coresponds to the name passed in as an argument to textStyle.
-     * Like the other two **`RefANSICodeByName`** functions, textStyle shouldn't be used
-     * to directly format terminal output, but rather to create custom functions that
-     * style terminalOutput.
+     * - 'bold' or 'b'
+     * - 'italic' or 'i',
+     * - 'underline' or 'u',
+     * - 'strikethrough'or 's',
+     * - 'invert',
+     * - 'hidden',
      *
-     * @param styleType String that references style by name (i.e. italic, bold, etc...)
-     * @returns The ANSI Escape code that coresponds to the styles name passed in.
+     * ##### The single character values above are shorthands, for example: the value 'b' will return the same number as 'bold' does.
+     *
+     * @param styleType A valid, ANSI Supported, style-type
+     * @returns ANSI Escape code that coresponds to the styleType passed into the styleType parameter
      *  */
-    static textStyle (styleType:string) {
+    static textStyleCode (styleType:string) {
         switch (styleType.trim().toLowerCase()) {
             case '':
                 return ansiEscCodes.textStyleDefault;
@@ -271,20 +304,28 @@ class RefANSICodeByName {
                 return ansiEscCodes.textStyleDefault;
             case 'bold':
                 return ansiEscCodes.textStyleBold;
+            case 'b':
+                return ansiEscCodes.textStyleBold;
             case 'italic':
+                return ansiEscCodes.textStyleItalic;
+            case 'i':
                 return ansiEscCodes.textStyleItalic;
             case 'underline':
                 return ansiEscCodes.textStyleUnderline;
+            case 'u':
+                return ansiEscCodes.textStyleUnderline;
             case 'invert':
-                return ansiEscCodes.textStyleColorInversion;
+                return ansiEscCodes.textStyleInversion;
             case 'hidden':
                 return ansiEscCodes.textStyleHidden;
-            case 'strikeThrough':
-                return ansiEscCodes.textStyleStikeThrough;
+            case 'strikethrough':
+                return ansiEscCodes.textStyleStrikeThrough;
+            case 's':
+                return ansiEscCodes.textStyleStrikeThrough;
             default:
                 return ansiEscCodes.textStyleDefault;
         }
     }
 }
 
-export default RefANSICodeByName;
+export default ANSICodeByName;

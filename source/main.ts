@@ -7,16 +7,59 @@
  * it will receive its first instructions from this file.
  * <!---------------------------------------------------------------------------------> */
 
-import RefANSICodeByName from './lib/ansi-escape-codes.js';
+import ANSICodeByName from './lib/ansi-escape-codes.js';
 
-const sumStr = 'ANSI codes are fun!';
-const close = '\x1b[0m';
+type TextStyle = number | string;
 
-const fg = RefANSICodeByName.fgColor('Red');
-const bg = RefANSICodeByName.bgColor('Black');
-const style = RefANSICodeByName.textStyle('bold');
+const testArray = [
+  'italic',
+  'bold',
+  'italic bold',
+  'fooBar foofoo head',
+  'underline',
+  'strikethrough',
+  'bold',
+  'italic'
+];
 
-const escSequence = `\x1b[${style};${fg};${bg}m${sumStr}${close}`;
+namespace styleAttributes {
+    const textStyle = {
+      apple: 'foo'
+    };
 
-console.log(escSequence);
+    const textStyleArg = () => {
+      return 0;
+    };
+}
 
+function validateTextStyle (textStyle: TextStyle) {
+  if (typeof textStyle === 'string') {
+    textStyle = ANSICodeByName.textStyleCode(textStyle);
+  } else if (typeof textStyle !== 'number') {
+    const e = new TypeError();
+    e.message +=
+            '\nError validating textStyle: ARGUMENTS TYPE IS INVALID\n' +
+            'Expected a primitive type of `string` or `number`, but received a type of ' +
+            `${typeof textStyle} instead`;
+  }
+
+  switch (textStyle) {
+    case 1:
+      return true;
+    case 3:
+      return true;
+    case 4:
+      return true;
+    case 7:
+      return true;
+    case 9:
+      return true;
+    default:
+      return false;
+  }
+}
+
+testArray.forEach(textstyle => {
+  const isValid = validateTextStyle(textstyle);
+  console.log(`TEXTSTYLE = ${textstyle} | isValid: ${isValid}`);
+});

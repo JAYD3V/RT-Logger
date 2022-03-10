@@ -1,4 +1,4 @@
-/** ___________________________________________________________________________________
+/** ____________________________________________________________________________
  * @format
  * @JAYD3V
  * @author A. Chambers -> W3Dojo@gmail.com
@@ -7,55 +7,66 @@
  * by formatting the strings that are logged in the console with ANSI escape
  *  sequences & color codes."
  * @license MIT
- * -----------------------------------------------------------------------------------  */
+ * ------------------------------------------------------------------------ */
 
-/**
- *
- * ### Function Generator
- *
- * Generates functions that format strings to print the specified color & weight. This
- * is a relatively simple function, and the functions it generates, can be generated to
- * format strings with 1 of 6 different colors.
- *   1. **Red** (ANSI: 31)
- *   2. **Green** (ANSI: 31)
- *   3. **Yellow** (ANSI: 31)
- *   4. **Blue** (ANSI: 31)
- *   5. **Magenta** (ANSI: 31)
- *   6. **Cyan** (ANSI: 31)
- *
- * @param ANSIColorCode
- * @param boldFg
- * @returns
- */
-type ColorConf = {
-    fg?: string;
-    bg?: string;
-    style?: string;
+import { argv } from 'process';
+import ANSICodeByName from './ansi-escape-codes.js';
+
+const { fgCode, bgCode, textStyleCode } = ANSICodeByName;
+
+type GenOutputArg = {
+    fgColor: number;
+    bgColor: number | null;
+    textStyle: number[] | number | null;
 };
 
-export class ANSIColorFmt {
-    log (output: string, args: [string | number], config: ColorConf) {
-        args.forEach(arg => {
-            if (typeof arg === 'string') {
-                output.replace('%s', arg);
-            } else if (typeof arg === 'number') {
-                output.replace('%d', arg.toString());
-            } else {
-                throw new TypeError(
-                    '\nCLASS NAME: `ANSIColorFormat`\n' +
-                        'MEMBER FUNC: `log(args...)`\n' +
-                        'CAUSE: An Argument passed to `log` was of an invalid type.' +
-                        `INVALID ARGUMENT: ${arg}` +
-                        `INVALID VALID: ${typeof arg}`
-                );
-            }
-            console.log(arg);
-        });
+export function genEscSeq (
+    arg: GenOutputArg = {
+        fgColor: 0,
+        bgColor: null,
+        textStyle: null
+    }
+) {
+    let seq = '\x1b[';
+
+    if (arg.textStyle && arg.textStyle !== null) {
+        if (Array.isArray(arg.textStyle)) {
+            arg.textStyle.forEach(ANSIEscCode => {
+                seq += ANSIEscCode;
+            });
+        } else {
+            seq += arg.textStyle;
+        }
     }
 
-    #addANSIColorCodesToString (fg: number, bg?: number | null, style?: number | null) {
-        const openEsc = style ? `\x1b[${style};` : `\x1b[0;`;
-        return bg ? `${openEsc}${fg};${bg}m` : `${openEsc}${fg}m`;
+    if (arg.bgColor && arg.bgColor !== null) {
+        seq += arg.fgColor;
+    }
+
+    return seq;
+}
+
+
+function genEscapeSequence () {}
+
+type VibrantConsoleConfig = {
+    fgColor: string;
+    bgColor?: string;
+    textStyle?: string;
+    invert?: boolean | null;
+}
+
+class VibrantConsole {
+    private fgColor: string;
+    private bgColor?: string | null;
+    private textStyle?: string | null;
+    private invert?: boolean | null;
+
+    constructor (argz:VibrantConsoleConfig) {
+        this.fgColor = argz.fgColor;
+        this.bgColor = argz.bgColor;
+        this.textStyle = argz.textStyle;
+        this.invert = argz.invert;
     }
 }
 

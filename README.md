@@ -1,5 +1,10 @@
 # Vibrant: Color API for Node.js
 
+**A Few Guiding Notes:**
+ - &nbsp; &nbsp; A list that covers all colors & styles supported by _ANSI Escape-codes_ can be found in **Sect 2**.
+ - &nbsp; &nbsp; To read about the library, The color library for the quick & simple coloring of terminal output can be found in **Sect 4**.
+
+
 **VIBRANT** is a color library & API for Node.js. Most people will use it for its color library to elegantly color their console's output, or to for a quick yet tidy means for adding color to their CLI. VIBRANT also has an API aspect to it, which allows developers to quickly write there own functions for coloring output using ANSI Color codes. The module is well documented, and has many features. It is important to note that the module has only been recently released and is in beta. If you pick it up, and try it out, please provide me with any feedback you have &/or bugs that you find, as well as any mistakes in this documentation.
 
 <br>
@@ -23,7 +28,9 @@
 <br>
 
 ## Sect 1: Referencing ANSI Codes By Name
+
 #### Topic: "Class RefANSICodeByName"
+
 The **RefANSICodeByName** class converts color-names & style-names into ANSI Escape codes so that color names & style names can be used in string form to apply the colors & styles the reference to terminal output.
 
 This class its-self shouldn't be used in the actual formatting of terminal output, but rather in the creation
@@ -77,7 +84,7 @@ of custom functions used to format terminal output.
 
 ## 2.0 | ANSI Support & Parameters Defined by ANSI Support
 
-&nbsp; &nbsp; &nbsp; &nbsp; The colors/styles that are supported by _ANSI Escape-codes_ are listed bellow. ANSI can be a bit confusing at first because of the way that it targets specific properties of the terminals output. ANSI uses a completely different number for the same color, when it is being used to color the background, than when it is being used to color the foreground. So if we use blue for an example, blue foreground is colored using the code `34`, but if we want to color the background blue we would use `44`.
+ calls  to  of the terminals output. ANSI uses a completely different number for the same color, when it is being used to color the background, than when it is being used to color the foreground. So if we use blue for an example, blue foreground is colored using the code `34`, but if we want to color the background blue we would use `44`.
 
 &nbsp; &nbsp; &nbsp; &nbsp; It also only offers a handful of colors, but it offers two versions of each color, so if we continue to use blue in our example, we would show that, blue foregrounds are styled using the number `34`, and bright blue foregrounds are styled using `94`, and if we wanted a bright blue background we would use `104`
 
@@ -118,4 +125,18 @@ The ansi code for Blue Foreground is `34`, and the
 | **Bright Cyan**  | &nbsp; `'brightCyan'`  |  **c!** |  96         | 106         |
 | **Bright White** | &nbsp; `'brightWhite'` |  **w!** |  97         | 107         |
 
+<br>
+
 ---
+
+<br>
+
+### ANSI Text-style Codes
+
+|  Output Color    | Argument               | Short   | `textStyle()` |
+|----------------: |----------------------: | :-----: | :---------: |
+| **italic**        | &nbsp; `'black'`       |  **k**  |  1         |
+| **bold**          | &nbsp; `'red'`         |  **r**  |  3         |
+| **underline**     | &nbsp; `'green'`       |  **g**  |  4         |
+| **strikeThrough** | &nbsp; `'green'`       |  **g**  |  9         |
+

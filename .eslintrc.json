@@ -25,7 +25,16 @@
         "no-else-return": ["error"],
         "no-useless-return": ["error"],
         "comma-dangle": ["error", "never"],
-        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "indent": [
+            "error",
+            2,
+            {
+                "SwitchCase": 1,
+                "FunctionExpression": {
+                    "parameters": "first"
+                }
+            }
+        ],
         "quotes": [
             "error",
             "single",
@@ -39,8 +48,8 @@
         "no-multiple-empty-lines": [
             "error",
             {
-                "max": 5,
-                "maxBOF": 0,
+                "max": 4,
+                "maxBOF": 1,
                 "maxEOF": 1
             }
         ],
@@ -48,12 +57,15 @@
         "max-len": [
             "error",
             {
+                // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
                 "code": 90,
-                "comments": 90,
-                "tabWidth": 4,
+                "tabWidth": 2,
+
+                // Ignore the length of RegEx, URLs, & Comments
                 "ignoreUrls": true,
                 "ignoreRegExpLiterals": true,
-                "ignoreTrailingComments": true
+                "ignoreTrailingComments": true,
+                "ignoreComments": true
             }
         ]
     }
