@@ -6,8 +6,9 @@
  * @fileoverview Module's entry point. When the module is initiated, the program/app using
  * it will receive its first instructions from this file.
  * <!---------------------------------------------------------------------------------> */
+/*
 
-import ANSICodeByName from './lib/ansi-escape-codes.js';
+import ANSICodes from './lib/ansi-escape-codes.js';
 
 type TextStyle = number | string;
 
@@ -23,7 +24,7 @@ const testArray = [
 ];
 
 namespace styleAttributes {
-    const textStyle = {
+    const getStyle = {
       apple: 'foo'
     };
 
@@ -34,7 +35,7 @@ namespace styleAttributes {
 
 function validateTextStyle (textStyle: TextStyle) {
   if (typeof textStyle === 'string') {
-    textStyle = ANSICodeByName.textStyleCode(textStyle);
+    textStyle = ANSICodes.textStyleCode(textStyle);
   } else if (typeof textStyle !== 'number') {
     const e = new TypeError();
     e.message +=
@@ -63,3 +64,5 @@ testArray.forEach(textstyle => {
   const isValid = validateTextStyle(textstyle);
   console.log(`TEXTSTYLE = ${textstyle} | isValid: ${isValid}`);
 });
+  */
+

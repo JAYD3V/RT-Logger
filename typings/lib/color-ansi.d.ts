@@ -1,4 +1,4 @@
-/** ___________________________________________________________________________________
+/** ____________________________________________________________________________
  * @format
  * @JAYD3V
  * @author A. Chambers -> W3Dojo@gmail.com
@@ -7,7 +7,7 @@
  * by formatting the strings that are logged in the console with ANSI escape
  *  sequences & color codes."
  * @license MIT
- * -----------------------------------------------------------------------------------  */
+ * ------------------------------------------------------------------------ */
 declare type GenOutputArg = {
     fgColor: number;
     bgColor: number | null;

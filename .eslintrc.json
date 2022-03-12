@@ -6,25 +6,35 @@
         "browser": false,
         "commonjs": false
     },
-
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-
-    "plugins": ["@typescript-eslint"],
-    "extends": ["eslint:recommended", "standard"],
-
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "standard"
+    ],
     "rules": {
-        "no-console": ["off"],
-        "no-useless-constructor": ["off"],
-        "no-unused-expressions": ["warn"],
-        "no-unused-vars": ["warn"],
-        "no-lonely-if": ["error"],
-        "no-else-return": ["error"],
-        "no-useless-return": ["error"],
-        "comma-dangle": ["error", "never"],
+        "camelcase": "off",
+        "no-console": "off",
+        "no-useless-constructor": "off",
+        "no-unused-expressions": "warn",
+        "no-unused-vars": "warn",
+        "no-lonely-if": "error",
+        "no-else-return": "error",
+        "no-useless-return": "error",
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
         "indent": [
             "error",
             2,
@@ -42,9 +52,6 @@
                 "allowTemplateLiterals": true
             }
         ],
-
-        "semi": ["error", "always"],
-
         "no-multiple-empty-lines": [
             "error",
             {
@@ -53,14 +60,12 @@
                 "maxEOF": 1
             }
         ],
-
         "max-len": [
             "error",
             {
                 // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
                 "code": 90,
                 "tabWidth": 2,
-
                 // Ignore the length of RegEx, URLs, & Comments
                 "ignoreUrls": true,
                 "ignoreRegExpLiterals": true,

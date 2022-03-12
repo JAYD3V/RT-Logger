@@ -1,142 +1,64 @@
-# Vibrant: Color API for Node.js
+# VIBRANT
 
-**A Few Guiding Notes:**
- - &nbsp; &nbsp; A list that covers all colors & styles supported by _ANSI Escape-codes_ can be found in **Sect 2**.
- - &nbsp; &nbsp; To read about the library, The color library for the quick & simple coloring of terminal output can be found in **Sect 4**.
-
-
-**VIBRANT** is a color library & API for Node.js. Most people will use it for its color library to elegantly color their console's output, or to for a quick yet tidy means for adding color to their CLI. VIBRANT also has an API aspect to it, which allows developers to quickly write there own functions for coloring output using ANSI Color codes. The module is well documented, and has many features. It is important to note that the module has only been recently released and is in beta. If you pick it up, and try it out, please provide me with any feedback you have &/or bugs that you find, as well as any mistakes in this documentation.
-
-<br>
-<br>
-
-
-## Table of Contents
-
-1. **Class: RefANSICodeByName**
-    * **1.1** &nbsp; &nbsp; Member Function: `fgColor(colorName)`
-    * **1.2** &nbsp; &nbsp; Member Function: `bgColor(colorName)`
-    * **1.3** &nbsp; &nbsp; Member Function: `textStyle(styleType)`
-
-2. **Specific Parameters** & **ANSI Color Support**
-    * **2.1** &nbsp; &nbsp; Table Reference for `colorName` & ANSI supported colors
-    * **2.2** &nbsp; &nbsp; Table Reference for `styleType` & ANSI supported text-styles
+#### PACKAGE META
+- **Version:** v0.0.0 *beta*
+- **License:** MIT _(aka opensource)_
+- **Contact:** _W3Dojo@Gmail.com_
+- **Repository:** _Https://www.GitHub.com/JAYD3V/VIBRANT.git_
+- **Issues/Bugs:** _Https://www.GitHub.com/JAYD3V/VIBRANT/issues_
 
 ---
 
-<br>
-<br>
+Vibrant is a Library that styles the terminal output logged by running Node.js processes. Vibrant is a new package, released in early April of 2022, and is still in beta. If you download, and give this package a test drive, any issues reported, whether they are bugs, or spelling errors in the documentation is greatly appreciated. Suggestions will be warmly welcomed too.
 
-## Sect 1: Referencing ANSI Codes By Name
+---
 
-#### Topic: "Class RefANSICodeByName"
-
-The **RefANSICodeByName** class converts color-names & style-names into ANSI Escape codes so that color names & style names can be used in string form to apply the colors & styles the reference to terminal output.
-
-This class its-self shouldn't be used in the actual formatting of terminal output, but rather in the creation
-of custom functions used to format terminal output.
-
-##### _The output is hello world, but its foreground is yellow, its backround is read, its text is styled to be italic._
-
-<!-- TODO: Add Screen Shot -->
-
-- #### 1.1 &nbsp;~&nbsp; `RefANSICodeByName.fgColor(colorName)`
-    * **Static Method**
-    * `fgColor()` converts colors names into ANSI Escape codes. The color name passed into fgColor must be an ANSI supported color. Each color ANSI supports coresponds to two specific codes, one for formatting the background color of terminal output, and the other for formatting the foreground color of terminal output. Obviously `fgColor()` returns the code that coresponds to the terminal output's background color. To get the ANSI code that coresponds to the terminal output's foreground color, use `bgColor()`. _fgColor_ typically isn't used in the direct formatting of terminal output, but rather for the building of classes & functions that format terminal output. In other words, there's typically another layer of abstraction above fgColor(). That next layer should be built using fgColor & company.
+### TABLE of CONTENTS
+1. SUPPORT
+    - 1.2 Linux Platforms
+    - 1.3 Windows Platforms
+2. ...
+3. ...
+4. ...
 
 <br>
+<br>
 
-- #### **1.2** &nbsp;~&nbsp; `RefANSICodeByName.bgColor(colorName)`
-    - **Static Method**
-    - `bgColor()` converts colors names into ANSI Escape codes. The color name passed into bgColor must be an ANSI supported color. Each color ANSI supports coresponds to two specific codes, one for formatting the background color of terminal output, and the other for formatting the foreground color of terminal output. Obviously `bgColor()` returns the code that coresponds to the terminal output's background color. To get the ANSI code that coresponds to the terminal output's foreground color, use `fgColor()`. _bgColor_ typically isn't used in the direct formatting of terminal output, but rather for the building of classes & functions that format terminal output. In other words, there's typically another layer of abstraction above bgColor(). That next layer should be built using bgColor & company.
+## 1.0 &nbsp;|&nbsp; SUPPORT & PLATFORMS
+Vibrant follows three **ANSI Color standards**, consequently; any terminal that uses **Vibrant** must implement at-least one of the three standards. Fortunately, most all terminals support ANSI's oldest Color Standard, which is the ANSI 16x Color Standard. I personally cannot remember a terminal, other than the old MS-DOS terminals that were around when I was a kid, that didn't support ANSI 16x Color. All other Color Modules built for Node.js ouput, also make use of ANSI standards, so this excerpt applies to any coloring of the terminals output while using Node.js.
 
-- #### **1.3** &nbsp;~&nbsp; `RefANSICodeByName.textStyle(styleType)`
-    - **Static Method**
-    - `textStyle()` converts text-style names (_i.e._ italic, bold, etc) into the ANSI escape-code that coresponds to the name passed in as an argument to textStyle. Like the other two **`RefANSICodeByName`** functions, textStyle shouldn't be used to directly format terminal output, but rather to create custom functions that style terminalOutput. In other words, there's typically another layer of abstraction above textStyle(). That next layer should be built using textStyle & company.
+The other two standards are **ANSI's 24-bit TrueColor Standard** and **ANSI's 256x Color Standard**. The two standards I just mentioned support many more colors than the _ANSI 16x Color_, but public software that makes use of the newer 2 standards, cannot just simply assume everyone's terminal will have implimented the standards. This problem is easily solved for Linux systems, as Linux has an Environment Variable named `$TERM` that identifies the ANSI color standard that the terminal is currently implimenting. I am currently working on a solution for Windows Powershell, but I am confident that verifying support on windows won't be too difficult.
 
-##### The following example will print the output seen in image #01
+&nbsp;
 
+---
+### 1.1 &nbsp;|&nbsp; LINUX SUPPORT
+
+If your on a linux system, you can see what standard your terminal supports by executing the following command
+
+### `echo $TERM`
+###### You should see one of the following, or somthing similar, printed in your terminals output: **`xterm-256color`** _-or-_ **`xterm`.**
+
+&nbsp;
+
+##### Custom Configure The Standard Used:
+
+If your terminal supports a standard, but its not working, you can try custom configuring your environment. When a users platform is **Linux**, the ANSI Standard can be configured by setting the _`$TERM` Env Variable._ in the user's _BASH Configuration Document_. `.bashrc` is located in the users home directory, the path is always `~/.bashrc`.
+
+1. Open the file using your preferred editor (I usually use VSCode via `$ code ~/.bashrc`, or NANO via `nano ~/.bashrc`)
+
+2. Once the config-file is open, prepend one of the following statements to the very end of the file: (Note _Do not add both export statements, use either_ 1, _or_ 2).
 ```
-    const close = '\x1b[0m'; // Ends formatting
-    const sumStr = 'ANSI codes are fun!'; // Random string
+# FILE: ~/.bashrc
 
-    const fg = RefANSICodeByName.fgColor('Red');
-    const bg = RefANSICodeByName.bgColor('Black');
-    const style = RefANSICodeByName.textStyle('bold');
+# (1) ANSI 24-bit TrueColor Standard
+export TERM=xterm
 
-    /* The line below demonstrates formatting a string using ANSI escape
-    sequences */
-    const escSequence = `\x1b[${style};${fg};${bg}m${sumStr}${close}`;
-
-    console.log(escSequence);
+# (2) ANSI 256xColor Standard
+export TERM=xterm-256color
 ```
 
-###### _Image #01_
-[![img #01](https://i.postimg.cc/RFLr81B8/clrmod-exmp-01.png)](https://postimg.cc/HcnP8yj4)
----
-
-###### NOTE: _If you don't format strings printed by the console carefully, you can screw up your command prompt. Its worth practicing for a while before using ANSI codes in any publicly published works. Trust me, i know from experiance..._
+###### NOTE: _After configuring `~/.bashrc` use the command `source ~/.bashrc` to refresh the file so that the new configuration is applied to the environment._
 
 <br>
-<br>
-<br>
-<br>
-
-## 2.0 | ANSI Support & Parameters Defined by ANSI Support
-
- calls  to  of the terminals output. ANSI uses a completely different number for the same color, when it is being used to color the background, than when it is being used to color the foreground. So if we use blue for an example, blue foreground is colored using the code `34`, but if we want to color the background blue we would use `44`.
-
-&nbsp; &nbsp; &nbsp; &nbsp; It also only offers a handful of colors, but it offers two versions of each color, so if we continue to use blue in our example, we would show that, blue foregrounds are styled using the number `34`, and bright blue foregrounds are styled using `94`, and if we wanted a bright blue background we would use `104`
-
-###### _To Summarize:_
-  * Standard-blue Foreground = `34`
-  * Standard-blue Background = `44`
-  * Bright-blue Foreground = `94`
-  * Bright-blue Background = `104`
-
-###### NOTE: _You can see that there are some consistant patterns implimented in the standard._ _The ANSI color standard is old, its one of the old still in use. Another old standard is ANSI C._ Its important to point out
-
-##### For example:
-
-The ansi code for Blue Foreground is `34`, and the
-
----
-
-<br>
-
-##### _The table below lists all of the Supported Colors, Semantics & Shorthands that can be passed to any `colorName` parameter_
-
-|  Output Color    | Argument               | Short   | `fgColor()` | `bgColor()` |
-|----------------: |----------------------: | :-----: | :---------: | :---------: |
-| **Black**        | &nbsp; `'black'`       |  **k**  |  30         | 40          |
-| **Red**          | &nbsp; `'red'`         |  **r**  |  31         | 41          |
-| **Green**        | &nbsp; `'green'`       |  **g**  |  32         | 42          |
-| **Yellow**       | &nbsp; `'yellow'`      |  **y**  |  33         | 43          |
-| **Blue**         | &nbsp; `'blue'`        |  **b**  |  34         | 44          |
-| **Magenta**      | &nbsp; `'magenta'`     |  **p**  |  35         | 45          |
-| **Cyan**         | &nbsp; `'cyan'`        |  **c**  |  36         | 46          |
-| **White**        | &nbsp; `'white'`       |  **w**  |  37         | 47          |
-| **Bright Black** | &nbsp; `'brightBlack'` |  **k!** |  90         | 100         |
-| **Bright Red**   | &nbsp; `'brightRed'`   |  **r!** |  91         | 101         |
-| **Bright Green** | &nbsp; `'brightGreen'` |  **g!** |  92         | 102         |
-| **Bright Yellow**| &nbsp; `'brightYellow'`|  **y!** |  93         | 103         |
-| **Bright Blue**  | &nbsp; `'brightBlue'`  |  **b!** |  94         | 104         |
-| **Bright Purple**| &nbsp; `'brightPurple'`|  **p!** |  95         | 105         |
-| **Bright Cyan**  | &nbsp; `'brightCyan'`  |  **c!** |  96         | 106         |
-| **Bright White** | &nbsp; `'brightWhite'` |  **w!** |  97         | 107         |
-
-<br>
-
----
-
-<br>
-
-### ANSI Text-style Codes
-
-|  Output Color    | Argument               | Short   | `textStyle()` |
-|----------------: |----------------------: | :-----: | :---------: |
-| **italic**        | &nbsp; `'black'`       |  **k**  |  1         |
-| **bold**          | &nbsp; `'red'`         |  **r**  |  3         |
-| **underline**     | &nbsp; `'green'`       |  **g**  |  4         |
-| **strikeThrough** | &nbsp; `'green'`       |  **g**  |  9         |
 

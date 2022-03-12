@@ -10,9 +10,9 @@
  * ------------------------------------------------------------------------ */
 
 import { argv } from 'process';
-import ANSICodeByName from './ansi-escape-codes.js';
+import ANSICodeByName from './ansi-lib.js';
 
-const { fgCode, bgCode, textStyleCode } = ANSICodeByName;
+
 
 type GenOutputArg = {
     fgColor: number;
@@ -21,29 +21,29 @@ type GenOutputArg = {
 };
 
 export function genEscSeq (
-    arg: GenOutputArg = {
-        fgColor: 0,
-        bgColor: null,
-        textStyle: null
-    }
+  arg: GenOutputArg = {
+    fgColor: 0,
+    bgColor: null,
+    textStyle: null
+  }
 ) {
-    let seq = '\x1b[';
+  let seq = '\x1b[';
 
-    if (arg.textStyle && arg.textStyle !== null) {
-        if (Array.isArray(arg.textStyle)) {
-            arg.textStyle.forEach(ANSIEscCode => {
-                seq += ANSIEscCode;
-            });
-        } else {
-            seq += arg.textStyle;
-        }
+  if (arg.textStyle && arg.textStyle !== null) {
+    if (Array.isArray(arg.textStyle)) {
+      arg.textStyle.forEach(ANSIEscCode => {
+        seq += ANSIEscCode;
+      });
+    } else {
+      seq += arg.textStyle;
     }
+  }
 
-    if (arg.bgColor && arg.bgColor !== null) {
-        seq += arg.fgColor;
-    }
+  if (arg.bgColor && arg.bgColor !== null) {
+    seq += arg.fgColor;
+  }
 
-    return seq;
+  return seq;
 }
 
 
@@ -63,10 +63,10 @@ class VibrantConsole {
     private invert?: boolean | null;
 
     constructor (argz:VibrantConsoleConfig) {
-        this.fgColor = argz.fgColor;
-        this.bgColor = argz.bgColor;
-        this.textStyle = argz.textStyle;
-        this.invert = argz.invert;
+      this.fgColor = argz.fgColor;
+      this.bgColor = argz.bgColor;
+      this.textStyle = argz.textStyle;
+      this.invert = argz.invert;
     }
 }
 
