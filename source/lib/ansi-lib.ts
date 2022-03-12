@@ -328,36 +328,29 @@ export function getAnsiFgCode (clr:string) {
   }
 }
 
-
-
-export function validateFgEscCode (fgColorCode: number): boolean {
-  if (typeof fgColorCode !== 'number') {
-    throw new TypeError(
-      'The arg passed into `validateFgEscCode()` is invalid. Expected a number, ' +
-        `but received an argument of type ${typeof fgColorCode}`
-    );
+export function validateFgColorCode (fgClrCode: number): boolean {
+  if (fgClrCode < 30 || fgClrCode > 98) {
+    return false;
   }
 
-  if (fgColorCode < 30) return false;
-  if (fgColorCode > 37 && fgColorCode < 91) return false;
-  if (fgColorCode > 97) return false;
-
-  return true;
+  return (fgClrCode > 38 && fgClrCode < 90);
 }
 
+export function validateBgColorCode (fgClrCode: number):boolean {
+  if (fgClrCode < 40 || fgClrCode > 108) return false;
 
+  return (fgClrCode > 48 && fgClrCode < 100);
+}
 
-export function validateBgEscCode (fgColorCode: number):boolean {
-  if (typeof fgColorCode !== 'number') {
-    throw new TypeError(
-      'The arg passed into `validateBgEscCode()` is invalid. Expected a number, ' +
-        `but received an argument of type ${typeof fgColorCode}`
-    );
+export function validateStyleCode (textStyleCode:number) {
+  switch (textStyleCode) {
+    case 0: return true;
+    case 1: return true;
+    case 3: return true;
+    case 4: return true;
+    case 7: return true;
+    case 9: return true;
+
+    default: return false;
   }
-
-  if (fgColorCode < 30) return false;
-  if (fgColorCode > 37 && fgColorCode < 91) return false;
-  if (fgColorCode > 97) return false;
-
-  return true;
 }

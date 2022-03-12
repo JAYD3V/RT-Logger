@@ -11,13 +11,8 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "extends": [
-        "eslint:recommended",
-        "standard"
-    ],
+    "plugins": ["@typescript-eslint"],
+    "extends": ["eslint:recommended", "standard"],
     "rules": {
         "camelcase": "off",
         "no-console": "off",
@@ -27,14 +22,8 @@
         "no-lonely-if": "error",
         "no-else-return": "error",
         "no-useless-return": "error",
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+        "comma-dangle": ["error", "never"],
+        "semi": ["error", "always"],
         "indent": [
             "error",
             2,
