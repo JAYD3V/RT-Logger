@@ -9,8 +9,11 @@
  * @license MIT
  * ------------------------------------------------------------------------ */
 
-import { argv } from 'process';
-import ANSICodeByName from './ansi-lib.js';
+/*
+import {
+  getAnsiBgCode,
+  getAnsiFgCode
+} from './ansi-lib.js';
 
 
 
@@ -22,9 +25,9 @@ type GenOutputArg = {
 
 export function genEscSeq (
   arg: GenOutputArg = {
-    fgColor: 0,
-    bgColor: null,
-    textStyle: null
+    fgColor   : 0,
+    bgColor   : null,
+    textStyle : null
   }
 ) {
   let seq = '\x1b[';
@@ -70,3 +73,4 @@ class VibrantConsole {
     }
 }
 
+ */

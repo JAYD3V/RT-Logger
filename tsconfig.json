@@ -1,19 +1,21 @@
 {
     "compilerOptions": {
-        // Project Structure
+        // PROJ STRUCTURE
         "rootDir": "./source",
         "outDir": "./module",
         "declarationDir": "./typings",
+        // Configure ECMAScript Standard
+        "target": "ES2021",
+        "lib": [
+            "ESNext"
+        ],
 
-        // ECMAS Support
-        "target": "ES2022",
-        "lib": ["ESNext"],
+
+        // Configure Module Type (ESM)
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
         "declaration": true,
         "declarationMap": true,
-
-        // Module Configuration
         "esModuleInterop": true,
         "resolveJsonModule": true,
 
@@ -27,9 +29,7 @@
     // Source Control Management
     "exclude": [
         "build/**/*", // Don't try & compile the compilers output silly!
-        "res/**/*", // Resources do not need to be compiled
-        "*.tmp/", // Local Temporary File (Doesn't Exist in Repo)
-        ".vscode/", // VSCode Configuration Dir (Doesn't Exist in Repo)
+        ".tmp/", // Local Temporary File (Doesn't Exist in Repo)
         "*.js", // JavaScript Files
         "*.mjs", // ESM JavaScript Files
         "*.cjs", // Common JavaScript Files

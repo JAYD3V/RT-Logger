@@ -8,4 +8,4 @@
  *  sequences & color codes."
  * @license MIT
  * ------------------------------------------------------------------------ */
-//# sourceMappingURL=color.d.ts.map
+//# sourceMappingURL=str-fmt.d.ts.map

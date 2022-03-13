@@ -27,9 +27,9 @@ export default class E extends Error {
     meta?:ErrorMetaObj;
 
     constructor (type: string, brief: string, meta?:ErrorMetaObj) {
-        super();
-        this.message = brief;
-        this.name = type;
-        this.meta = meta;
+      super();
+      this.message = brief;
+      this.name = type;
+      this.meta = meta;
     }
 }

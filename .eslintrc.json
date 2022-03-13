@@ -1,29 +1,61 @@
 {
+    "plugins": [
+        "@typescript-eslint",
+        "cypress"
+    ],
     "env": {
         "es2021": true,
         "node": true,
-        "mocha": true,
-        "browser": false,
-        "commonjs": false
+        "cypress/globals": true
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"],
-    "extends": ["eslint:recommended", "standard"],
+    "extends": [
+        "plugin:cypress/recommended",
+        "standard"
+    ],
     "rules": {
+        /************************************************
+
+
+
+        CYPRESS RULES (added via cypress plugin)
+        -------------------------------------------------                   */
+        // Yellow
+        "cypress/no-force": "warn",
+        "cypress/no-unnecessary-waiting": "warn",
+        "cypress/assertion-before-screenshot": "warn",
+        // Red
+        "cypress/no-assigning-return-values": "error",
+        "cypress/no-async-tests": "error",
+        "cypress/no-pause": "error",
+        /************************************************
+
+
+
+        ESLINT NATIVE RULES
+        -------------------------------------------------                   */
         "camelcase": "off",
         "no-console": "off",
         "no-useless-constructor": "off",
+        // Yellow
         "no-unused-expressions": "warn",
         "no-unused-vars": "warn",
+        // RED
         "no-lonely-if": "error",
         "no-else-return": "error",
         "no-useless-return": "error",
-        "comma-dangle": ["error", "never"],
-        "semi": ["error", "always"],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
         "indent": [
             "error",
             2,
@@ -60,6 +92,35 @@
                 "ignoreRegExpLiterals": true,
                 "ignoreTrailingComments": true,
                 "ignoreComments": true
+            }
+        ],
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "consistent": true
+                },
+                "ObjectPattern": {
+                    "minProperties": 2
+                },
+                "ImportDeclaration": {
+                    "minProperties": 2
+                },
+                "ExportDeclaration": "never"
+            }
+        ],
+        "key-spacing": [
+            "error",
+            {
+                "multiLine": {
+                    "beforeColon": false,
+                    "afterColon": true
+                },
+                "align": {
+                    "beforeColon": true,
+                    "afterColon": true,
+                    "on": "colon"
+                }
             }
         ]
     }

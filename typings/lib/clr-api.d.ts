@@ -8,4 +8,4 @@
  *  sequences & color codes."
  * @license MIT
  * ------------------------------------------------------------------------ */
-//# sourceMappingURL=color.d.ts.map
+//# sourceMappingURL=clr-api.d.ts.map
