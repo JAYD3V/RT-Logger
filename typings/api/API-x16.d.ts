@@ -8,19 +8,7 @@
  *  sequences & color codes."
  * @license MIT
  * ------------------------------------------------------------------------ */
-
-import {
-//   getAnsiBgCode,
-//   getAnsiFgCode
-} from '../lib/color-x16-lib.js';
-
-
-export function vibrant (fg:string) {
-    const internal = {
-        log (mesg:string) {
-            console.log(mesg);
-            return internal;
-        }
-    };
-    return internal;
-}
+export declare function vibrant(fg: string): {
+    log(mesg: string): any;
+};
+//# sourceMappingURL=API-x16.d.ts.map

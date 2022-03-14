@@ -73,6 +73,6 @@
         "sandbox": "tsc && node ./module/sandbox.js",
         "main": "tsc && node ./module/main.js",
         "build": "tsc --build .",
-        "test": "mocha ./module/test"
+        "test": "tsc && node module/test/exec-all.test.js"
     }
 }

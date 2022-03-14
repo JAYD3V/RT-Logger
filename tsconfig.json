@@ -4,12 +4,12 @@
         "rootDir": "./source",
         "outDir": "./module",
         "declarationDir": "./typings",
+
         // Configure ECMAScript Standard
         "target": "ES2021",
         "lib": [
             "ESNext"
         ],
-
 
         // Configure Module Type (ESM)
         "module": "NodeNext",
@@ -35,6 +35,7 @@
         "*.cjs", // Common JavaScript Files
         "*.cts" // Common TypeScript Files
     ],
+
     "include": [
         "source/**/*",
         "*.ts", // All TypeScript Files

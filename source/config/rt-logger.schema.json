@@ -1,5 +1,0 @@
-{
-    "$schema": "https://github.com/JAYD3V/schema/rt-logger.schema.json",
-    "$id": "rt-logger.schema",
-    "rt-logger": {}
-}

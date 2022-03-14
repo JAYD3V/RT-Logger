@@ -1,12 +1,10 @@
 {
     "plugins": [
-        "@typescript-eslint",
-        "cypress"
+        "@typescript-eslint"
     ],
     "env": {
         "es2021": true,
-        "node": true,
-        "cypress/globals": true
+        "node": true
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -14,24 +12,9 @@
         "sourceType": "module"
     },
     "extends": [
-        "plugin:cypress/recommended",
-        "standard"
+        // "standard"
     ],
     "rules": {
-        /************************************************
-
-
-
-        CYPRESS RULES (added via cypress plugin)
-        -------------------------------------------------                   */
-        // Yellow
-        "cypress/no-force": "warn",
-        "cypress/no-unnecessary-waiting": "warn",
-        "cypress/assertion-before-screenshot": "warn",
-        // Red
-        "cypress/no-assigning-return-values": "error",
-        "cypress/no-async-tests": "error",
-        "cypress/no-pause": "error",
         /************************************************
 
 
@@ -41,9 +24,10 @@
         "camelcase": "off",
         "no-console": "off",
         "no-useless-constructor": "off",
+        "array-element-newline": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
         // Yellow
-        "no-unused-expressions": "warn",
-        "no-unused-vars": "warn",
         // RED
         "no-lonely-if": "error",
         "no-else-return": "error",
@@ -58,7 +42,7 @@
         ],
         "indent": [
             "error",
-            2,
+            4,
             {
                 "SwitchCase": 1,
                 "FunctionExpression": {
@@ -76,7 +60,7 @@
         "no-multiple-empty-lines": [
             "error",
             {
-                "max": 4,
+                "max": 2,
                 "maxBOF": 1,
                 "maxEOF": 1
             }
@@ -86,7 +70,7 @@
             {
                 // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
                 "code": 90,
-                "tabWidth": 2,
+                "tabWidth": 4,
                 // Ignore the length of RegEx, URLs, & Comments
                 "ignoreUrls": true,
                 "ignoreRegExpLiterals": true,
@@ -109,6 +93,7 @@
                 "ExportDeclaration": "never"
             }
         ],
+
         "key-spacing": [
             "error",
             {
