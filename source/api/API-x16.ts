@@ -9,11 +9,6 @@
  * @license MIT
  * ------------------------------------------------------------------------ */
 
-import {
-//   getAnsiBgCode,
-//   getAnsiFgCode
-} from '../lib/color-x16-lib.js';
-
 
 export function vibrant (fg:string) {
     const internal = {

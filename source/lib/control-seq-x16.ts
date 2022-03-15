@@ -1,7 +1,6 @@
 import { type } from 'os';
-import { validateStyleCode } from './color-x16-lib.js';
 
-const x16palette = [
+const vldColors = [
     'black',   'red',       'green',   'yellow',
     'blue',    'magenta',   'cyan',    'white',
     'black+',  'red+',      'green+',  'yellow+',
@@ -54,57 +53,87 @@ function referenceColorByName (color:string) {
  * @returns **`false`** when the color-name is invalid.
  * @JAYD3V */
 export function validateColorName(colorName:string){
-    for(var i = 0; i < 16; i++ ){
-        if(colorName === x16palette[i]) return true;
+    for (var i = 0; i < 16; i++ ){
+        if (colorName === vldColors[i]) {return true;}
     }
 
     return false;
 }
 
-export function validateFgColorCode (fgClrCode: number): boolean {
-    if (fgClrCode < 30 || fgClrCode > 98) {
+export function validateFgColorCode (fgColorCtrlArg: number): boolean {
+    return (
+        (fgColorCtrlArg > 30 && fgColorCtrlArg < 37)
+     || (fgColorCtrlArg > 90 && fgColorCtrlArg < 97)
+     || (fgColorCtrlArg === 39));
+}
+
+export function validateBgColorCode (bgColorCtrlArg: number){
+    if (bgColorCtrlArg < 40 || bgColorCtrlArg > 108 || bgColorCtrlArg ) {
         return false;
     }
 
-    return (fgClrCode > 38 && fgClrCode < 90);
+    return (bgColorCtrlArg > 48 && bgColorCtrlArg < 100);
 }
 
-export function validateBgColorCode (fgClrCode: number){
-    if (fgClrCode < 40 || fgClrCode > 108 || fgClrCode ) {
-        return false;
+/**
+ * Tests a number to see if it is a valid ANSI TextStyle code.
+ *
+ * @param textStyleCode Number that will be tested.
+ * @returns true if the number is `valid. Returns `false` if the number is invalid.
+ * */
+export function validateStyleCode (textStyleCode:number) {
+    switch (textStyleCode) {
+        case 0: return true;
+        case 1: return true;
+        case 3: return true;
+        case 4: return true;
+        case 7: return true;
+        case 8: return true;
+        case 9: return true;
+
+        default: return false;
     }
-
-    return (fgClrCode > 48 && fgClrCode < 100);
 }
-
 
 type colorReference = string | number;
 
 /**
  * Ultimately, this function Validates a color reference, checking as to whether or not t is a number or string, that can be used as a valid argument in the lower level "Graphics Rendation Control Function"
  * @param colorReference
- * @returns
- */
-export function validateControlArg(colorReference: colorReference){
-    if(typeof colorReference === 'string'){
-        for(var i = 0; i < 16; i++ ){
-            if(colorReference === x16palette[i]) return true;
+ * @returns */
+export function validateControlArg(colorRef: colorReference){
+    if (typeof colorRef === 'string'){
+        for (var i = 0; i < 16; i++ ){
+            if (colorRef === vldColors[i]) {return true;}
         }
 
         return false;
     }
 
-    if(typeof colorReference === 'number'){
-        if(validateBgColorCode(colorReference) === true) return true;
-        if(validateFgColorCode(colorReference) === true) return true;
-        if(validateStyleCode(colorReference) === true) return true;
+    if (typeof colorRef === 'number'){
+        console.log('Numeric ColorReference = ' + colorRef);
+
+        if (validateBgColorCode(colorRef) === true) {
+            console.log('ValidBgColorCode: ' + true);
+            return true;
+        }
+
+        if (validateFgColorCode(colorRef) === true){
+            console.log('ValidBgColorCode: ' + true);
+            return true;
+        }
+
+        if (validateStyleCode(colorRef) === true){
+            console.log('ValidStyleCode: ' + true);
+            return true;
+        }
 
         return false;
     }
 
-    throw new TypeError(
+    throw new TypeError (
         `colorReference's type is invalid. Expected a number or string, but` +
-            `the value ${colorReference} was received`
+            `the value ${colorRef} was received`
     );
 }
 

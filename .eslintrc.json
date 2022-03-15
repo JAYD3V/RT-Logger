@@ -1,7 +1,5 @@
 {
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["@typescript-eslint"],
     "env": {
         "es2021": true,
         "node": true
@@ -32,14 +30,9 @@
         "no-lonely-if": "error",
         "no-else-return": "error",
         "no-useless-return": "error",
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+        "comma-dangle": ["error", "never"],
+        "semi": ["error", "always"],
+        "comma-style": ["error", "last"],
         "indent": [
             "error",
             4,
@@ -69,7 +62,7 @@
             "error",
             {
                 // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
-                "code": 90,
+                "code": 80,
                 "tabWidth": 4,
                 // Ignore the length of RegEx, URLs, & Comments
                 "ignoreUrls": true,
@@ -93,7 +86,6 @@
                 "ExportDeclaration": "never"
             }
         ],
-
         "key-spacing": [
             "error",
             {
@@ -105,6 +97,40 @@
                     "beforeColon": true,
                     "afterColon": true,
                     "on": "colon"
+                }
+            }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "overrides": {
+                    "else": {
+                        "before": false,
+                        "after": false
+                    }
+                }
+            }
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always",
+            {
+                "arraysInObjects": false
+            }
+        ],
+        "operator-linebreak": [
+            "error",
+            "after",
+            {
+                "overrides": {
+                    "?": "before",
+                    ":": "before",
+                    "||": "before",
+                    "&&": "before",
+                    ">=": "before",
+                    "<=": "before",
+                    "==": "before",
+                    "===": "before"
                 }
             }
         ]
