@@ -14,7 +14,13 @@
         /************************************************
         TYPESCRIPT-ESLINT PARSER RULES
         -------------------------------------------------                   */
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-inferrable-types": "warn",
+        "@typescript-eslint/no-explicit-any": "off",
+
         /************************************************
+        PREPEND TYPESCRIPT-ESLINT RULES: "@typescript-eslint/"
 
         ESLINT NATIVE RULES
         -------------------------------------------------                   */

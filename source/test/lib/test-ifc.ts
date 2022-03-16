@@ -30,7 +30,6 @@ type TestResult = {
     notes?: string[] | string | null;
 };
 
-type TestGroupResults = {};
 
 function x<Type>(){}
 
