@@ -1,21 +1,20 @@
 {
-    "plugins": ["@typescript-eslint"],
-    "env": {
-        "es2021": true,
-        "node": true
-    },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "extends": [
-        // "standard"
-    ],
+    /*
+    Block properties: "env", "parser", "parserOptions" & "plugins"
+    each have an active configuration inside of the `./package.json`
+    file's "eslintConfig" block property. It should be noted that any
+    settings configured in both, this `./.eslintrc.json` file, and in
+    the `./package.json` file, will take on the value set here in this
+    file, as this file is considered to be at a higher level by eslint.
+    */
+
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+
     "rules": {
         /************************************************
-
-
+        TYPESCRIPT-ESLINT PARSER RULES
+        -------------------------------------------------                   */
+        /************************************************
 
         ESLINT NATIVE RULES
         -------------------------------------------------                   */
@@ -126,7 +125,9 @@
                     "?": "before",
                     ":": "before",
                     "||": "before",
+                    "|": "before",
                     "&&": "before",
+                    "&": "before",
                     ">=": "before",
                     "<=": "before",
                     "==": "before",

@@ -1,58 +1,35 @@
 {
     "name": "rt-logger",
+    "type": "module",
+    "version": "0.0.0",
+    "license": "MIT",
+    "description": "",
     "author": {
         "email": "W3Dojo@Gmail.com",
         "name": "Andrew Chambers",
         "url": "Https://GitHub.com/JAYD3V"
     },
-    "type": "module",
-    "license": "MIT",
-    "version": "0.0.0",
-    "main": "./module/main.js",
-    "typings": "./typings",
+    "keywords": [],
     "bugs": "https://github.com/JAYD3V/RT-Logger/issues",
     "homepage": "https://github.com/JAYD3V/RT-Logger#readme",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/JAYD3V/RT-Logger.git"
+    "repository": "git+https://github.com/JAYD3V/RT-Logger.git",
+    "main": "./module/main.js",
+    "typings": "./typings",
+    "eslintConfig": {
+        "env": {
+            "es2021": true,
+            "node": true,
+            "commonjs": false
+        },
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "ecmaVersion": "latest",
+            "sourceType": "module"
+        },
+        "plugins": [
+            "@typescript-eslint"
+        ]
     },
-    "description": "This is a **project template** (aka pre-configured software environment) for an **ESM Module** that runs in the **Node.js** runtime-environment, and is written in the Statically typed ECMAScript language, **TypeScript**. This template includes a package.json file that has a pre-defined ***dev-dependencies list***, which includes, ESLint, Prettier, TypeScript & Mocha. The template attempts to pre-configure all of the tools, as well as including some configuration for VSCode. This is not a template that will work for every persons intents & purposes, however, for those it does work for, it is a huge time saver.",
-    "keywords": [
-        "Runtime",
-        "Logger",
-        "Errors",
-        "StackTrace",
-        "Stack",
-        "Trace",
-        "Error",
-        "Handling",
-        "Logging",
-        "Logs",
-        "Log",
-        "*.log",
-        "JavaScript",
-        "TypeScript",
-        "Node.js",
-        "TS",
-        "JS",
-        "Node",
-        "ES2022",
-        "ES2021",
-        "ES6",
-        "ESM",
-        "ES",
-        "ECMAS",
-        "Mod",
-        "Module",
-        "ESNext",
-        "NodeNext",
-        "Node-Module",
-        ".mts",
-        ".ts",
-        ".mjs",
-        ".js"
-    ],
-    "//": "typescript@next is currently required",
     "devDependencies": {
         "@types/json-schema": "*",
         "@types/node": "*",

@@ -1,13 +1,13 @@
 import { type } from 'os';
 
 const vldColors = [
-    'black',   'red',       'green',   'yellow',
-    'blue',    'magenta',   'cyan',    'white',
-    'black+',  'red+',      'green+',  'yellow+',
-    'blue+',   'magenta+',  'cyan+',   'white+'
+    'black', 'red', 'green', 'yellow',
+    'blue', 'magenta', 'cyan', 'white',
+    'black+', 'red+', 'green+', 'yellow+',
+    'blue+', 'magenta+', 'cyan+', 'white+'
 ];
 
-function referenceColorByName (color:string) {
+function referenceColorByName(color: string) {
     switch (color.trim().toLowerCase()) {
         case 'black':
             return 30;
@@ -52,23 +52,24 @@ function referenceColorByName (color:string) {
  * @returns **`true`** when the color-name is valid..
  * @returns **`false`** when the color-name is invalid.
  * @JAYD3V */
-export function validateColorName(colorName:string){
-    for (var i = 0; i < 16; i++ ){
-        if (colorName === vldColors[i]) {return true;}
+export function validateColorName(colorName: string) {
+    for (var i = 0; i < 16; i++) {
+        if (colorName === vldColors[i]) { return true; }
     }
 
     return false;
 }
 
-export function validateFgColorCode (fgColorCtrlArg: number): boolean {
+export function validateFgColorCode(fgColorCtrlArg: number) {
     return (
         (fgColorCtrlArg > 30 && fgColorCtrlArg < 37)
-     || (fgColorCtrlArg > 90 && fgColorCtrlArg < 97)
-     || (fgColorCtrlArg === 39));
+        || (fgColorCtrlArg > 90
+            && fgColorCtrlArg < 97)
+        || (fgColorCtrlArg === 39));
 }
 
-export function validateBgColorCode (bgColorCtrlArg: number){
-    if (bgColorCtrlArg < 40 || bgColorCtrlArg > 108 || bgColorCtrlArg ) {
+export function validateBgColorCode(bgColorCtrlArg: number) {
+    if (bgColorCtrlArg < 40 || bgColorCtrlArg > 108 || bgColorCtrlArg) {
         return false;
     }
 
@@ -81,7 +82,7 @@ export function validateBgColorCode (bgColorCtrlArg: number){
  * @param textStyleCode Number that will be tested.
  * @returns true if the number is `valid. Returns `false` if the number is invalid.
  * */
-export function validateStyleCode (textStyleCode:number) {
+export function validateStyleCode(textStyleCode: number) {
     switch (textStyleCode) {
         case 0: return true;
         case 1: return true;
@@ -95,22 +96,21 @@ export function validateStyleCode (textStyleCode:number) {
     }
 }
 
-type colorReference = string | number;
+export type colorReference = string | number;
 
 /**
- * Ultimately, this function Validates a color reference, checking as to whether or not t is a number or string, that can be used as a valid argument in the lower level "Graphics Rendation Control Function"
- * @param colorReference
- * @returns */
-export function validateControlArg(colorRef: colorReference){
-    if (typeof colorRef === 'string'){
-        for (var i = 0; i < 16; i++ ){
-            if (colorRef === vldColors[i]) {return true;}
+ * @param colorRef
+ * @returns `true` if Valid & `false` when invalid. */
+export function validateControlArg(colorRef: colorReference) {
+    if (typeof colorRef === 'string') {
+        for (var i = 0; i < 16; i++) {
+            if (colorRef === vldColors[i]) { return true; }
         }
 
         return false;
     }
 
-    if (typeof colorRef === 'number'){
+    if (typeof colorRef === 'number') {
         console.log('Numeric ColorReference = ' + colorRef);
 
         if (validateBgColorCode(colorRef) === true) {
@@ -118,12 +118,12 @@ export function validateControlArg(colorRef: colorReference){
             return true;
         }
 
-        if (validateFgColorCode(colorRef) === true){
+        if (validateFgColorCode(colorRef) === true) {
             console.log('ValidBgColorCode: ' + true);
             return true;
         }
 
-        if (validateStyleCode(colorRef) === true){
+        if (validateStyleCode(colorRef) === true) {
             console.log('ValidStyleCode: ' + true);
             return true;
         }
@@ -131,9 +131,9 @@ export function validateControlArg(colorRef: colorReference){
         return false;
     }
 
-    throw new TypeError (
+    throw new TypeError(
         `colorReference's type is invalid. Expected a number or string, but` +
-            `the value ${colorRef} was received`
+        `the value ${colorRef} was received`
     );
 }
 
