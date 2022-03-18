@@ -1,44 +1,42 @@
 {
-    "compilerOptions": {
-        // PROJ STRUCTURE
-        "rootDir": "./source",
-        "outDir": "./module",
-        "declarationDir": "./typings",
+  "compilerOptions": {
+    // PROJ STRUCTURE
+    "rootDir": "./source",
+    "outDir": "./module",
+    "declarationDir": "./typings",
 
-        // Configure ECMAScript Standard
-        "target": "ES2021",
-        "lib": [
-            "ESNext"
-        ],
+    // Configure ECMAScript Standard
+    "target": "ES2021",
+    "lib": ["ESNext"],
 
-        // Configure Module Type (ESM)
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "declaration": true,
-        "declarationMap": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
+    // Configure Module Type (ESM)
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
 
-        // TSC Strictness
-        "strict": true,
-        "alwaysStrict": true,
-        "noUnusedParameters": false,
-        "useUnknownInCatchVariables": false // use w/ instanceof
-    },
+    // TSC Strictness
+    "strict": true,
+    "alwaysStrict": true,
+    "noUnusedParameters": false,
+    "useUnknownInCatchVariables": false // use w/ instanceof
+  },
 
-    // Source Control Management
-    "exclude": [
-        "build/**/*", // Don't try & compile the compilers output silly!
-        ".tmp/", // Local Temporary File (Doesn't Exist in Repo)
-        "*.js", // JavaScript Files
-        "*.mjs", // ESM JavaScript Files
-        "*.cjs", // Common JavaScript Files
-        "*.cts" // Common TypeScript Files
-    ],
+  // Source Control Management
+  "exclude": [
+    "build/**/*", // Don't try & compile the compilers output silly!
+    ".tmp/", // Local Temporary File (Doesn't Exist in Repo)
+    "*.js", // JavaScript Files
+    "*.mjs", // ESM JavaScript Files
+    "*.cjs", // Common JavaScript Files
+    "*.cts" // Common TypeScript Files
+  ],
 
-    "include": [
-        "source/**/*",
-        "*.ts", // All TypeScript Files
-        "*.mts" // All ESM TypeScript Files
-    ]
+  "include": [
+    "source/**/*",
+    "*.ts", // All TypeScript Files
+    "*.mts" // All ESM TypeScript Files
+  ]
 }

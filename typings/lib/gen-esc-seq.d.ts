@@ -5,5 +5,4 @@
  * @author A. Chambers - W3Dojo@gmail.com
  * @license MIT
  * ----------------------------------------------------------------------------------- */
-export {};
 //# sourceMappingURL=gen-esc-seq.d.ts.map

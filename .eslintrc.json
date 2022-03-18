@@ -1,5 +1,5 @@
 {
-    /*
+  /*
     Block properties: "env", "parser", "parserOptions" & "plugins"
     each have an active configuration inside of the `./package.json`
     file's "eslintConfig" block property. It should be noted that any
@@ -8,138 +8,159 @@
     file, as this file is considered to be at a higher level by eslint.
     */
 
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
 
-    "rules": {
-        /************************************************
-        TYPESCRIPT-ESLINT PARSER RULES
-        -------------------------------------------------                   */
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-inferrable-types": "warn",
-        "@typescript-eslint/no-explicit-any": "off",
+  "rules": {
+    /************************************************
+    TYPESCRIPT-ESLINT PARSER RULES
+    -------------------------------------------------                   */
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
 
-        /************************************************
-        PREPEND TYPESCRIPT-ESLINT RULES: "@typescript-eslint/"
+    /************************************************
+    PREPEND TYPESCRIPT-ESLINT RULES: "@typescript-eslint/"
 
-        ESLINT NATIVE RULES
-        -------------------------------------------------                   */
-        "camelcase": "off",
-        "no-console": "off",
-        "no-useless-constructor": "off",
-        "array-element-newline": "off",
-        "no-unused-expressions": "off",
-        "no-unused-vars": "off",
-        // Yellow
-        // RED
-        "no-lonely-if": "error",
-        "no-else-return": "error",
-        "no-useless-return": "error",
-        "comma-dangle": ["error", "never"],
-        "semi": ["error", "always"],
-        "comma-style": ["error", "last"],
-        "indent": [
-            "error",
-            4,
-            {
-                "SwitchCase": 1,
-                "FunctionExpression": {
-                    "parameters": "first"
-                }
-            }
-        ],
-        "quotes": [
-            "error",
-            "single",
-            {
-                "allowTemplateLiterals": true
-            }
-        ],
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 2,
-                "maxBOF": 1,
-                "maxEOF": 1
-            }
-        ],
-        "max-len": [
-            "error",
-            {
-                // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
-                "code": 80,
-                "tabWidth": 4,
-                // Ignore the length of RegEx, URLs, & Comments
-                "ignoreUrls": true,
-                "ignoreRegExpLiterals": true,
-                "ignoreTrailingComments": true,
-                "ignoreComments": true
-            }
-        ],
-        "object-curly-newline": [
-            "error",
-            {
-                "ObjectExpression": {
-                    "consistent": true
-                },
-                "ObjectPattern": {
-                    "minProperties": 2
-                },
-                "ImportDeclaration": {
-                    "minProperties": 2
-                },
-                "ExportDeclaration": "never"
-            }
-        ],
-        "key-spacing": [
-            "error",
-            {
-                "multiLine": {
-                    "beforeColon": false,
-                    "afterColon": true
-                },
-                "align": {
-                    "beforeColon": true,
-                    "afterColon": true,
-                    "on": "colon"
-                }
-            }
-        ],
-        "keyword-spacing": [
-            "error",
-            {
-                "overrides": {
-                    "else": {
-                        "before": false,
-                        "after": false
-                    }
-                }
-            }
-        ],
-        "object-curly-spacing": [
-            "error",
-            "always",
-            {
-                "arraysInObjects": false
-            }
-        ],
-        "operator-linebreak": [
-            "error",
-            "after",
-            {
-                "overrides": {
-                    "?": "before",
-                    ":": "before",
-                    "||": "before",
-                    "|": "before",
-                    "&&": "before",
-                    "&": "before",
-                    ">=": "before",
-                    "<=": "before",
-                    "==": "before",
-                    "===": "before"
-                }
-            }
-        ]
-    }
+    ESLINT NATIVE RULES
+    -------------------------------------------------                   */
+    "camelcase": "off",
+    "no-console": "off",
+    "no-useless-constructor": "off",
+    "array-element-newline": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    // Yellow
+    // RED
+    "no-lonely-if": "error",
+    "no-else-return": "error",
+    "no-useless-return": "error",
+    "comma-dangle": ["error", "never"],
+    "semi": ["error", "always"],
+    "comma-style": ["error", "last"],
+
+    // INDENT: 'Use TypeScript's extension of the indent rule'
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "flatTernaryExpressions": true,
+        "FunctionExpression": {
+          "body": 1,
+          "parameters": 4
+        },
+        "FunctionDeclaration": {
+          "body": 1,
+          "parameters": 4
+        },
+        "CallExpression": {
+          "arguments": 2
+        },
+        "VariableDeclarator": 2,
+        "MemberExpression": 2,
+        "ObjectExpression": 1,
+        "ArrayExpression": 2,
+        "ImportDeclaration": 1
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxBOF": 1,
+        "maxEOF": 1
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        // SET Line Length @ 90  -&-  Tab-width @ 4-spaces
+        "code": 80,
+        "tabWidth": 2,
+        // Ignore the length of RegEx, URLs, & Comments
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreTrailingComments": true,
+        "ignoreComments": true
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "consistent": true
+        },
+        "ObjectPattern": {
+          "minProperties": 5
+        },
+        "ImportDeclaration": {
+          "minProperties": 5
+        },
+        "ExportDeclaration": "never"
+      }
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "multiLine": {
+          "beforeColon": false,
+          "afterColon": true
+        },
+        "align": {
+          "beforeColon": true,
+          "afterColon": true,
+          "on": "colon"
+        }
+      }
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "overrides": {
+          "else": {
+            "before": false,
+            "after": false
+          }
+        }
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always",
+      {
+        "arraysInObjects": false
+      }
+    ],
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          "?": "before",
+          ":": "before",
+          "||": "before",
+          "|": "before",
+          "&&": "before",
+          "&": "before",
+          ">=": "before",
+          "<=": "before",
+          "==": "before",
+          "===": "before"
+        }
+      }
+    ]
+  }
 }

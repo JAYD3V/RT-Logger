@@ -1,2 +1,2 @@
-export declare function testSuite(): void;
+export {};
 //# sourceMappingURL=validatation.test.d.ts.map
